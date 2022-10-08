@@ -6,6 +6,7 @@ var body = document.body;
 var h1El = document.createElement("h1");
 var infoEl1 = document.createElement("p");
 var buttonEl = document.createElement("button");
+var answersEl = document.createElement("div");
 
 
 var listEl = document.createElement("ol");
@@ -30,7 +31,29 @@ buttonEl.setAttribute("style", "margin:auto; display: flex;");
 function startGame () {
     isWin = false;
     timerCount = 75;
+    h1El.textContent = "Commonly used data types DO Not Include:"
+    infoEl1.textContent = "";
+  
+    li1.textContent = "1.strings";
+    li2.textContent = "2.booleans";
+    li3.textContent = "3.alerts";
+    li4.textContent = "4.numbers";
 
-    
-    nextQuestion();
+    body.appendChild(listEl);
+
+    listEl.appendChild(li1);
+    listEl.appendChild(li2);
+    listEl.appendChild(li3);
+    listEl.appendChild(li4);
+
+    li1.setAttribute("style", "color: white; background: blue; padding: 10px; width: 25%; border-radius: 5px; margin-top: 10px; font-size: 20px;")
+    li2.setAttribute("style", "color: white; background: blue; padding: 10px; width: 15%; border-radius: 5px; margin-top: 10px; font-size: 20px;")
+    li3.setAttribute("style", "color: white; background: blue; padding: 10px; width: 15%; border-radius: 5px; margin-top: 10px; font-size: 20px;")
+    li4.setAttribute("style", "color: white; background: blue; padding: 10px; width: 15%; border-radius: 5px; margin-top: 10px; font-size: 20px;")
+
 }
+
+buttonEl.addEventListener("click", function handleClick(event) {
+    startGame();
+    buttonEl.remove();
+});
