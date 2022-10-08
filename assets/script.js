@@ -46,14 +46,25 @@ function startGame () {
     listEl.appendChild(li3);
     listEl.appendChild(li4);
 
-    li1.setAttribute("style", "color: white; background: blue; padding: 10px; width: 25%; border-radius: 5px; margin-top: 10px; font-size: 20px;")
-    li2.setAttribute("style", "color: white; background: blue; padding: 10px; width: 15%; border-radius: 5px; margin-top: 10px; font-size: 20px;")
-    li3.setAttribute("style", "color: white; background: blue; padding: 10px; width: 15%; border-radius: 5px; margin-top: 10px; font-size: 20px;")
-    li4.setAttribute("style", "color: white; background: blue; padding: 10px; width: 15%; border-radius: 5px; margin-top: 10px; font-size: 20px;")
+    h1El.setAttribute("style", "margin:auto; width:50%; text-align: left;");
+    li1.setAttribute("style", "display: flex; margin:auto; color: white; background: blue; padding: 10px; width: 25%; border-radius: 5px; margin-top: 10px; font-size: 20px;")
+    li2.setAttribute("style", "display: flex; margin:auto; color: white; background: blue; padding: 10px; width: 25%; border-radius: 5px; margin-top: 10px; font-size: 20px;")
+    li3.setAttribute("style", "display: flex; margin:auto; color: white; background: blue; padding: 10px; width: 25%; border-radius: 5px; margin-top: 10px; font-size: 20px;")
+    li4.setAttribute("style", "display: flex; margin:auto; color: white; background: blue; padding: 10px; width: 25%; border-radius: 5px; margin-top: 10px; font-size: 20px;")
 
+    li3.setAttribute('type', 'button');
 }
 
 buttonEl.addEventListener("click", function handleClick(event) {
     startGame();
     buttonEl.remove();
 });
+
+function secondQuestion() {
+    h1El.textContent = "The condition in an if/else statement is enclosed with _________."
+    h1El.setAttribute("style", "margin:auto; width:50%; text-align: left;");
+
+    li3.addEventListener("click", function() {
+        secondQuestion();
+    });
+}
