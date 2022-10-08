@@ -53,6 +53,11 @@ function startGame () {
     li4.setAttribute("style", "display: flex; margin:auto; color: white; background: blue; padding: 10px; width: 25%; border-radius: 5px; margin-top: 10px; font-size: 20px;")
 
     li3.setAttribute('type', 'button');
+    
+    li3.addEventListener("click", function() {
+        secondQuestion();
+    });
+
 }
 
 buttonEl.addEventListener("click", function handleClick(event) {
@@ -64,7 +69,5 @@ function secondQuestion() {
     h1El.textContent = "The condition in an if/else statement is enclosed with _________."
     h1El.setAttribute("style", "margin:auto; width:50%; text-align: left;");
 
-    li3.addEventListener("click", function() {
-        secondQuestion();
-    });
+    
 }
