@@ -1,6 +1,7 @@
 var nextCard = document.querySelector(".quiz-card");
 var timerCount;
 var isWin;
+var totalScore = 0;
 
 var body = document.body;
 var h1El = document.createElement("h1");
@@ -27,6 +28,10 @@ body.appendChild(buttonEl);
 h1El.setAttribute("style", "margin:auto; width:50%; text-align:center;");
 infoEl1.setAttribute("style", "margin:auto; width:50%; text-align:center; font-size:20;");
 buttonEl.setAttribute("style", "margin:auto; display: flex;");
+
+function setScore() {
+
+}
 
 function startGame () {
     isWin = false;
@@ -165,17 +170,25 @@ function fifthQuestion() {
 
 function finalScore() {
     h1El.textContent = "All done!";
+    var infoEl1 = document.createElement("p");
+    var score = document.createElement("span");
 
 
     infoEl1.textContent = "Your final score is ";
+    score.textContent = "0";
 
-    li1.textContent = "";
-    li2.textContent = "";
-    li3.textContent = "";
-    li4.textContent = "";
+    body.appendChild(infoEl1);
+    infoEl1.appendChild(score);
+
+    infoEl1.setAttribute("style", "margin:auto; width:50%; text-align:center; font-size:20;");
+
+    li1.remove();
+    li2.remove();
+    li3.remove();
+    li4.remove();
 
 }
 
 function highscores() {
-    
+
 }
