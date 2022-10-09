@@ -54,7 +54,16 @@ function startGame () {
 
     li3.setAttribute('type', 'button');
     
+    li1.addEventListener("click", function() {
+        secondQuestion();
+    });
+    li2.addEventListener("click", function() {
+        secondQuestion();
+    });
     li3.addEventListener("click", function() {
+        secondQuestion();
+    });
+    li4.addEventListener("click", function() {
         secondQuestion();
     });
 
@@ -69,5 +78,100 @@ function secondQuestion() {
     h1El.textContent = "The condition in an if/else statement is enclosed with _________."
     h1El.setAttribute("style", "margin:auto; width:50%; text-align: left;");
 
+    li1.textContent = "1.quotes";
+    li2.textContent = "2.curly brackets";
+    li3.textContent = "3.parenthesis";
+    li4.textContent = "4.square brackets";
+
+    li1.addEventListener("click", function() {
+        thirdQuestion();
+    });
+    li2.addEventListener("click", function() {
+        thirdQuestion();
+    });
+    li3.addEventListener("click", function() {
+        thirdQuestion();
+    });
+    li4.addEventListener("click", function() {
+        thirdQuestion();
+    });
+}
+
+function thirdQuestion() {
+    h1El.textContent = "Arrays in JavaScript can be used to store ________.";
     
+    li1.textContent = "1.numbers and strings";
+    li2.textContent = "2.other arrays";
+    li3.textContent = "3.booleans";
+    li4.textContent = "4.all of the above";
+
+    li1.addEventListener("click", function() {
+        fourthQuestion();
+    });
+    li2.addEventListener("click", function() {
+        fourthQuestion();
+    });
+    li3.addEventListener("click", function() {
+        fourthQuestion();
+    });
+    li4.addEventListener("click", function() {
+        fourthQuestion();
+    });
+}
+
+function fourthQuestion() {
+    h1El.textContent = "String values must be enclosed within______ when being assigned to variables.";
+    
+    li1.textContent = "1.commas";
+    li2.textContent = "2.curly brackets";
+    li3.textContent = "3.quotes";
+    li4.textContent = "4.parenthesis";
+
+    li1.addEventListener("click", function() {
+        fifthQuestion();
+    });
+    li2.addEventListener("click", function() {
+        fifthQuestion();
+    });
+    li3.addEventListener("click", function() {
+        fifthQuestion();
+    });
+    li4.addEventListener("click", function() {
+        fifthQuestion();
+    });
+}
+
+function fifthQuestion() {
+    h1El.textContent = "A very useful tool used during development and debugging for printing content to the debugger is:";
+    
+    li1.textContent = "1.JavaScript";
+    li2.textContent = "2.terminal/bash";
+    li3.textContent = "3.for loops";
+    li4.textContent = "4.console log";
+
+    li1.addEventListener("click", function() {
+        finalScore();
+    });
+    li2.addEventListener("click", function() {
+        finalScore();
+    });
+    li3.addEventListener("click", function() {
+        finalScore();
+    });
+    li4.addEventListener("click", function() {
+        finalScore();
+    });
+}
+
+function finalScore() {
+    h1El.textContent = "All done!";
+
+    
+    infoEl1.textContent = "Your final score is ";
+
+    li1.textContent = "";
+    li2.textContent = "";
+    li3.textContent = "";
+    li4.textContent = "";
+
 }
