@@ -166,7 +166,7 @@ function fifthQuestion() {
 function finalScore() {
     h1El.textContent = "All done!";
 
-    
+
     infoEl1.textContent = "Your final score is ";
 
     li1.textContent = "";
@@ -174,4 +174,8 @@ function finalScore() {
     li3.textContent = "";
     li4.textContent = "";
 
+}
+
+function highscores() {
+    
 }
