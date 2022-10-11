@@ -304,27 +304,71 @@ function fifthQuestion() {
     });
 }
 
+
+
+    var score = document.createElement("span");
+    var initials = document.createElement("div");
+    var inputBox = document.createElement("input");
+    var submitBtn = document.createElement("button");
 function finalScore() {
     h1El.textContent = "All done!";
     var infoEl1 = document.createElement("p");
-    var score = document.createElement("span");
-    
 
     infoEl1.textContent = "Your final score is ";
     score.textContent = totalScore;
+    initials.textContent = "Enter initials: ";
+    submitBtn.textContent = "Submit";
 
     body.appendChild(infoEl1);
     infoEl1.appendChild(score);
+    body.appendChild(initials);
+    initials.appendChild(inputBox);
+    initials.appendChild(submitBtn);
 
     infoEl1.setAttribute("style", "margin:auto; width:50%; text-align:center; font-size:20;");
+    initials.setAttribute("style", "margin:auto; width:50%; text-align:center; font-size:20;");
+    inputBox.setAttribute("id", "input;");
 
     li1.remove();
     li2.remove();
     li3.remove();
     li4.remove();
 
+    submitBtn.addEventListener("click", function handleClick(event) {
+        renderHighScores();
+        highscores();
+        h1El.remove();
+        infoEl1.remove();
+        initials.remove();
+    });
 }
 
+
+
+function renderHighScores() {
+    var userInitials = localStorage.getItem("input");
+    
+    var scoreRecord
+    if (!initials) {
+        return;
+    }
+
+}
+
+
+
 function highscores() {
+    var highscores = document.createElement("h1");
+    var scoreList = document.createElement("ol");
+    var userScore = document.createElement("li");
+
+    highscores.textContent = "High Scores";
+
+    body.appendChild(highscores);
+    body.appendChild(scoreList);
+    scoreList.appendChild(userScore);
+
+    localStorage.setItem("userScore", userScore);
+    console.log(userScore);
 
 }
