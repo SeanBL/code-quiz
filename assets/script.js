@@ -1,5 +1,6 @@
 var nextCard = document.querySelector(".quiz-card");
-var timerCount;
+var timerCount = document.getElementById("timer");
+var timeLeft = 0;
 var isWin;
 var totalScore = 0;
 
@@ -20,6 +21,7 @@ var li4 = document.createElement("li");
 h1El.textContent = "Coding Quiz Challenge";
 infoEl1.textContent = "Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score/time by ten seconds!";
 buttonEl.textContent = "Start Quiz";
+timerCount.textContent = "time: " + timeLeft;
 
 body.appendChild(h1El);
 body.appendChild(infoEl1);
@@ -28,9 +30,21 @@ body.appendChild(buttonEl);
 h1El.setAttribute("style", "margin:auto; width:50%; text-align:center;");
 infoEl1.setAttribute("style", "margin:auto; width:50%; text-align:center; font-size:20;");
 buttonEl.setAttribute("style", "margin:auto; display: flex;");
+timerCount.setAttribute("style", "font-size: 20px;");
 
-function setScore() {
+function countDown() {
+    timeLeft = 75;
 
+    var timeInterval = setInterval(function (){
+        if (timeLeft > 1) {
+            timerCount.textContent = "time: " + timeLeft;
+            timeLeft--;
+        }else {
+            timerCount.textContent = 'time:';
+            clearInterval(timeInterval);
+        }
+        
+    }, 1000);
 }
 
 function startGame () {
@@ -73,11 +87,13 @@ function startGame () {
     li4.addEventListener("click", function() {
         secondQuestion();
         listEl.remove();
-    });
-
+    }); 
 }
+countDown();
+
 
 buttonEl.addEventListener("click", function handleClick(event) {
+    countDown();
     startGame();
     buttonEl.remove();
 });
