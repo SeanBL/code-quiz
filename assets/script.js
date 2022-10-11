@@ -52,24 +52,27 @@ function startGame () {
     listEl.appendChild(li4);
 
     h1El.setAttribute("style", "margin:auto; width:50%; text-align: left;");
-    li1.setAttribute("style", "display: flex; margin:auto; color: white; background: blue; padding: 10px; width: 25%; border-radius: 5px; margin-top: 10px; font-size: 20px;")
-    li2.setAttribute("style", "display: flex; margin:auto; color: white; background: blue; padding: 10px; width: 25%; border-radius: 5px; margin-top: 10px; font-size: 20px;")
-    li3.setAttribute("style", "display: flex; margin:auto; color: white; background: blue; padding: 10px; width: 25%; border-radius: 5px; margin-top: 10px; font-size: 20px;")
-    li4.setAttribute("style", "display: flex; margin:auto; color: white; background: blue; padding: 10px; width: 25%; border-radius: 5px; margin-top: 10px; font-size: 20px;")
-
-    li3.setAttribute('type', 'button');
+    li1.setAttribute("style", "display: flex; margin:auto; color: white; background: blue; padding: 10px; width: 25%; border-radius: 5px; margin-top: 10px; font-size: 20px;");
+    li2.setAttribute("style", "display: flex; margin:auto; color: white; background: blue; padding: 10px; width: 25%; border-radius: 5px; margin-top: 10px; font-size: 20px;");
+    li3.setAttribute("style", "display: flex; margin:auto; color: white; background: blue; padding: 10px; width: 25%; border-radius: 5px; margin-top: 10px; font-size: 20px;");
+    li4.setAttribute("style", "display: flex; margin:auto; color: white; background: blue; padding: 10px; width: 25%; border-radius: 5px; margin-top: 10px; font-size: 20px;");
     
     li1.addEventListener("click", function() {
         secondQuestion();
+        listEl.remove();
     });
     li2.addEventListener("click", function() {
         secondQuestion();
+        listEl.remove();
     });
     li3.addEventListener("click", function() {
+        totalScore++;
         secondQuestion();
+        listEl.remove();
     });
     li4.addEventListener("click", function() {
         secondQuestion();
+        listEl.remove();
     });
 
 }
@@ -83,88 +86,184 @@ function secondQuestion() {
     h1El.textContent = "The condition in an if/else statement is enclosed with _________."
     h1El.setAttribute("style", "margin:auto; width:50%; text-align: left;");
 
-    li1.textContent = "1.quotes";
-    li2.textContent = "2.curly brackets";
-    li3.textContent = "3.parenthesis";
-    li4.textContent = "4.square brackets";
+    var listEl = document.createElement("ol");
 
-    li1.addEventListener("click", function() {
+    var b1 = document.createElement("li");
+    var b2 = document.createElement("li");
+    var b3 = document.createElement("li");
+    var b4 = document.createElement("li");
+
+    b1.textContent = "1.quotes";
+    b2.textContent = "2.curly brackets";
+    b3.textContent = "3.parenthesis";
+    b4.textContent = "4.square brackets";
+
+    body.appendChild(listEl);
+
+    listEl.appendChild(b1);
+    listEl.appendChild(b2);
+    listEl.appendChild(b3);
+    listEl.appendChild(b4);
+
+    b1.setAttribute("style", "display: flex; margin:auto; color: white; background: blue; padding: 10px; width: 25%; border-radius: 5px; margin-top: 10px; font-size: 20px;");
+    b2.setAttribute("style", "display: flex; margin:auto; color: white; background: blue; padding: 10px; width: 25%; border-radius: 5px; margin-top: 10px; font-size: 20px;");
+    b3.setAttribute("style", "display: flex; margin:auto; color: white; background: blue; padding: 10px; width: 25%; border-radius: 5px; margin-top: 10px; font-size: 20px;");
+    b4.setAttribute("style", "display: flex; margin:auto; color: white; background: blue; padding: 10px; width: 25%; border-radius: 5px; margin-top: 10px; font-size: 20px;");
+
+    b1.addEventListener("click", function() {
         thirdQuestion();
+        listEl.remove();
     });
-    li2.addEventListener("click", function() {
+    b2.addEventListener("click", function() {
         thirdQuestion();
+        listEl.remove();
     });
-    li3.addEventListener("click", function() {
+    b3.addEventListener("click", function() {
+        totalScore++;
         thirdQuestion();
+        listEl.remove();
     });
-    li4.addEventListener("click", function() {
+    b4.addEventListener("click", function() {
         thirdQuestion();
+        listEl.remove();
     });
 }
 
 function thirdQuestion() {
     h1El.textContent = "Arrays in JavaScript can be used to store ________.";
-    
-    li1.textContent = "1.numbers and strings";
-    li2.textContent = "2.other arrays";
-    li3.textContent = "3.booleans";
-    li4.textContent = "4.all of the above";
 
-    li1.addEventListener("click", function() {
+    var listEl = document.createElement("ol");
+
+    var c1 = document.createElement("li");
+    var c2 = document.createElement("li");
+    var c3 = document.createElement("li");
+    var c4 = document.createElement("li");
+    
+    c1.textContent = "1.numbers and strings";
+    c2.textContent = "2.other arrays";
+    c3.textContent = "3.booleans";
+    c4.textContent = "4.all of the above";
+
+    body.appendChild(listEl);
+
+    listEl.appendChild(c1);
+    listEl.appendChild(c2);
+    listEl.appendChild(c3);
+    listEl.appendChild(c4);
+
+    c1.setAttribute("style", "display: flex; margin:auto; color: white; background: blue; padding: 10px; width: 25%; border-radius: 5px; margin-top: 10px; font-size: 20px;");
+    c2.setAttribute("style", "display: flex; margin:auto; color: white; background: blue; padding: 10px; width: 25%; border-radius: 5px; margin-top: 10px; font-size: 20px;");
+    c3.setAttribute("style", "display: flex; margin:auto; color: white; background: blue; padding: 10px; width: 25%; border-radius: 5px; margin-top: 10px; font-size: 20px;");
+    c4.setAttribute("style", "display: flex; margin:auto; color: white; background: blue; padding: 10px; width: 25%; border-radius: 5px; margin-top: 10px; font-size: 20px;");
+
+    c1.addEventListener("click", function() {
         fourthQuestion();
+        listEl.remove();
     });
-    li2.addEventListener("click", function() {
+    c2.addEventListener("click", function() {
         fourthQuestion();
+        listEl.remove();
     });
-    li3.addEventListener("click", function() {
+    c3.addEventListener("click", function() {
         fourthQuestion();
+        listEl.remove();
     });
-    li4.addEventListener("click", function() {
+    c4.addEventListener("click", function() {
+        totalScore++;
         fourthQuestion();
+        listEl.remove();
     });
 }
 
 function fourthQuestion() {
     h1El.textContent = "String values must be enclosed within______ when being assigned to variables.";
     
-    li1.textContent = "1.commas";
-    li2.textContent = "2.curly brackets";
-    li3.textContent = "3.quotes";
-    li4.textContent = "4.parenthesis";
+    var listEl = document.createElement("ol");
 
-    li1.addEventListener("click", function() {
+    var d1 = document.createElement("li");
+    var d2 = document.createElement("li");
+    var d3 = document.createElement("li");
+    var d4 = document.createElement("li");
+
+    d1.textContent = "1.commas";
+    d2.textContent = "2.curly brackets";
+    d3.textContent = "3.quotes";
+    d4.textContent = "4.parenthesis";
+
+    body.appendChild(listEl);
+
+    listEl.appendChild(d1);
+    listEl.appendChild(d2);
+    listEl.appendChild(d3);
+    listEl.appendChild(d4);
+
+    d1.setAttribute("style", "display: flex; margin:auto; color: white; background: blue; padding: 10px; width: 25%; border-radius: 5px; margin-top: 10px; font-size: 20px;");
+    d2.setAttribute("style", "display: flex; margin:auto; color: white; background: blue; padding: 10px; width: 25%; border-radius: 5px; margin-top: 10px; font-size: 20px;");
+    d3.setAttribute("style", "display: flex; margin:auto; color: white; background: blue; padding: 10px; width: 25%; border-radius: 5px; margin-top: 10px; font-size: 20px;");
+    d4.setAttribute("style", "display: flex; margin:auto; color: white; background: blue; padding: 10px; width: 25%; border-radius: 5px; margin-top: 10px; font-size: 20px;");
+
+    d1.addEventListener("click", function() {
         fifthQuestion();
+        listEl.remove();
     });
-    li2.addEventListener("click", function() {
+    d2.addEventListener("click", function() {
         fifthQuestion();
+        listEl.remove();
     });
-    li3.addEventListener("click", function() {
+    d3.addEventListener("click", function() {
+        totalScore++;
         fifthQuestion();
+        listEl.remove();
     });
-    li4.addEventListener("click", function() {
+    d4.addEventListener("click", function() {
         fifthQuestion();
+        listEl.remove();
     });
 }
 
 function fifthQuestion() {
     h1El.textContent = "A very useful tool used during development and debugging for printing content to the debugger is:";
     
-    li1.textContent = "1.JavaScript";
-    li2.textContent = "2.terminal/bash";
-    li3.textContent = "3.for loops";
-    li4.textContent = "4.console log";
+    var listEl = document.createElement("ol");
 
-    li1.addEventListener("click", function() {
+    var e1 = document.createElement("li");
+    var e2 = document.createElement("li");
+    var e3 = document.createElement("li");
+    var e4 = document.createElement("li");
+
+    e1.textContent = "1.JavaScript";
+    e2.textContent = "2.terminal/bash";
+    e3.textContent = "3.for loops";
+    e4.textContent = "4.console log";
+
+    body.appendChild(listEl);
+
+    listEl.appendChild(e1);
+    listEl.appendChild(e2);
+    listEl.appendChild(e3);
+    listEl.appendChild(e4);
+
+    e1.setAttribute("style", "display: flex; margin:auto; color: white; background: blue; padding: 10px; width: 25%; border-radius: 5px; margin-top: 10px; font-size: 20px;");
+    e2.setAttribute("style", "display: flex; margin:auto; color: white; background: blue; padding: 10px; width: 25%; border-radius: 5px; margin-top: 10px; font-size: 20px;");
+    e3.setAttribute("style", "display: flex; margin:auto; color: white; background: blue; padding: 10px; width: 25%; border-radius: 5px; margin-top: 10px; font-size: 20px;");
+    e4.setAttribute("style", "display: flex; margin:auto; color: white; background: blue; padding: 10px; width: 25%; border-radius: 5px; margin-top: 10px; font-size: 20px;");
+
+    e1.addEventListener("click", function() {
         finalScore();
+        listEl.remove();
     });
-    li2.addEventListener("click", function() {
+    e2.addEventListener("click", function() {
         finalScore();
+        listEl.remove();
     });
-    li3.addEventListener("click", function() {
+    e3.addEventListener("click", function() {
         finalScore();
+        listEl.remove();
     });
-    li4.addEventListener("click", function() {
+    e4.addEventListener("click", function() {
+        totalScore++;
         finalScore();
+        listEl.remove();
     });
 }
 
@@ -172,10 +271,10 @@ function finalScore() {
     h1El.textContent = "All done!";
     var infoEl1 = document.createElement("p");
     var score = document.createElement("span");
-
+    
 
     infoEl1.textContent = "Your final score is ";
-    score.textContent = "0";
+    score.textContent = totalScore;
 
     body.appendChild(infoEl1);
     infoEl1.appendChild(score);
