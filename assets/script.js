@@ -1,7 +1,6 @@
 var nextCard = document.querySelector(".quiz-card");
 var timerCount = document.getElementById("timer");
 var timeLeft = 0;
-var isWin;
 var totalScore = 0;
 
 var body = document.body;
@@ -48,8 +47,6 @@ function countDown() {
 }
 
 function startGame () {
-    isWin = false;
-    timerCount = 75;
     h1El.textContent = "Commonly used data types DO Not Include:"
     infoEl1.textContent = "";
   
@@ -89,7 +86,6 @@ function startGame () {
         listEl.remove();
     }); 
 }
-countDown();
 
 
 buttonEl.addEventListener("click", function handleClick(event) {
