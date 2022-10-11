@@ -1,6 +1,7 @@
 var nextCard = document.querySelector(".quiz-card");
 var timerCount = document.getElementById("timer");
 var timeLeft = 0;
+var timeInterval;
 var totalScore = 0;
 
 var body = document.body;
@@ -31,10 +32,11 @@ infoEl1.setAttribute("style", "margin:auto; width:50%; text-align:center; font-s
 buttonEl.setAttribute("style", "margin:auto; display: flex;");
 timerCount.setAttribute("style", "font-size: 20px;");
 
-function countDown() {
-    timeLeft = 5;
 
-    var timeInterval = setInterval(function (){
+function countDown() {
+    timeLeft = 75;
+
+    timeInterval = setInterval(function (){
         if (timeLeft >= 1) {
             timerCount.textContent = "time: " + timeLeft;
             timeLeft--;
