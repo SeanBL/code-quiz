@@ -32,18 +32,22 @@ buttonEl.setAttribute("style", "margin:auto; display: flex;");
 timerCount.setAttribute("style", "font-size: 20px;");
 
 function countDown() {
-    timeLeft = 75;
+    timeLeft = 5;
 
     var timeInterval = setInterval(function (){
-        if (timeLeft > 1) {
+        if (timeLeft >= 1) {
             timerCount.textContent = "time: " + timeLeft;
             timeLeft--;
         }else {
-            timerCount.textContent = 'time:';
+            timerCount.textContent = "time: 0";
             clearInterval(timeInterval);
         }
         
     }, 1000);
+}
+
+function stopCountDown() {
+    clearInterval(timeInterval);
 }
 
 function startGame () {
@@ -69,10 +73,12 @@ function startGame () {
     li4.setAttribute("style", "display: flex; margin:auto; color: white; background: blue; padding: 10px; width: 25%; border-radius: 5px; margin-top: 10px; font-size: 20px;");
     
     li1.addEventListener("click", function() {
+        timeLeft -= 5;
         secondQuestion();
         listEl.remove();
     });
     li2.addEventListener("click", function() {
+        timeLeft -= 5;
         secondQuestion();
         listEl.remove();
     });
@@ -82,6 +88,7 @@ function startGame () {
         listEl.remove();
     });
     li4.addEventListener("click", function() {
+        timeLeft -= 5;
         secondQuestion();
         listEl.remove();
     }); 
@@ -123,10 +130,12 @@ function secondQuestion() {
     b4.setAttribute("style", "display: flex; margin:auto; color: white; background: blue; padding: 10px; width: 25%; border-radius: 5px; margin-top: 10px; font-size: 20px;");
 
     b1.addEventListener("click", function() {
+        timeLeft -= 5;
         thirdQuestion();
         listEl.remove();
     });
     b2.addEventListener("click", function() {
+        timeLeft -= 5;
         thirdQuestion();
         listEl.remove();
     });
@@ -136,6 +145,7 @@ function secondQuestion() {
         listEl.remove();
     });
     b4.addEventListener("click", function() {
+        timeLeft -= 5;
         thirdQuestion();
         listEl.remove();
     });
@@ -169,14 +179,17 @@ function thirdQuestion() {
     c4.setAttribute("style", "display: flex; margin:auto; color: white; background: blue; padding: 10px; width: 25%; border-radius: 5px; margin-top: 10px; font-size: 20px;");
 
     c1.addEventListener("click", function() {
+        timeLeft -= 5;
         fourthQuestion();
         listEl.remove();
     });
     c2.addEventListener("click", function() {
+        timeLeft -= 5;
         fourthQuestion();
         listEl.remove();
     });
     c3.addEventListener("click", function() {
+        timeLeft -= 5;
         fourthQuestion();
         listEl.remove();
     });
@@ -215,10 +228,12 @@ function fourthQuestion() {
     d4.setAttribute("style", "display: flex; margin:auto; color: white; background: blue; padding: 10px; width: 25%; border-radius: 5px; margin-top: 10px; font-size: 20px;");
 
     d1.addEventListener("click", function() {
+        timeLeft -= 5;
         fifthQuestion();
         listEl.remove();
     });
     d2.addEventListener("click", function() {
+        timeLeft -= 5;
         fifthQuestion();
         listEl.remove();
     });
@@ -228,6 +243,7 @@ function fourthQuestion() {
         listEl.remove();
     });
     d4.addEventListener("click", function() {
+        timeLeft -= 5;
         fifthQuestion();
         listEl.remove();
     });
@@ -261,21 +277,28 @@ function fifthQuestion() {
     e4.setAttribute("style", "display: flex; margin:auto; color: white; background: blue; padding: 10px; width: 25%; border-radius: 5px; margin-top: 10px; font-size: 20px;");
 
     e1.addEventListener("click", function() {
+        timeLeft -= 5;
         finalScore();
         listEl.remove();
+        stopCountDown();
     });
     e2.addEventListener("click", function() {
+        timeLeft -= 5;
         finalScore();
         listEl.remove();
+        stopCountDown();
     });
     e3.addEventListener("click", function() {
+        timeLeft -= 5;
         finalScore();
         listEl.remove();
+        stopCountDown();
     });
     e4.addEventListener("click", function() {
         totalScore++;
         finalScore();
         listEl.remove();
+        stopCountDown();
     });
 }
 
