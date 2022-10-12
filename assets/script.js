@@ -310,6 +310,7 @@ function fifthQuestion() {
     var initials = document.createElement("div");
     var inputBox = document.createElement("input");
     var submitBtn = document.createElement("button");
+
 function finalScore() {
     h1El.textContent = "All done!";
     var infoEl1 = document.createElement("p");
@@ -335,7 +336,8 @@ function finalScore() {
     li4.remove();
 
     submitBtn.addEventListener("click", function handleClick(event) {
-        renderHighScores();
+        // renderHighScores();
+        userInitials(inputBox);
         highscores(totalScore);
         h1El.remove();
         infoEl1.remove();
@@ -344,29 +346,33 @@ function finalScore() {
 }
 
 
+// var scoresList = [];
+// function renderHighScores() {
+//     totalScore.textContent = scoreList.length;
 
-function renderHighScores() {
-    var userInitials = localStorage.getItem("input");
-    
-    var scoreRecord
-    if (!initials) {
-        return;
-    }
+//     for (i = 0; i < scoreList.length; i++) {
+//         var scoreList = scoresList[i];
 
+//         var li = document.createElement("li");
+//         li.textContent = scoreList;
+//         li.setAttribute("data-index", i);
+
+//         totalScore.appendChild(li);
+//     }
+
+// }
+
+function userInitials(initials) {
+    localStorage.setItem("input", initials)
+    console.log(localStorage);
 }
-
-
 
 function highscores(score) {
     var highscores = document.createElement("h1");
-    var scoreList = document.createElement("ol");
-    var userScore = document.createElement("li");
 
     highscores.textContent = "High Scores";
 
     body.appendChild(highscores);
-    body.appendChild(scoreList);
-    scoreList.appendChild(userScore);
 
     localStorage.setItem("userScore", score);
     console.log(localStorage);
