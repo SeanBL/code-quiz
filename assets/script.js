@@ -309,7 +309,7 @@ function fifthQuestion() {
     var score = document.createElement("span");
     var initials = document.createElement("div");
     var inputBox = document.createElement("input");
-    inputBox.setAttribute("id", "test");
+    inputBox.setAttribute("id", "input-box");
     var submitBtn = document.createElement("button");
 
 function finalScore() {
@@ -329,18 +329,18 @@ function finalScore() {
 
     infoEl1.setAttribute("style", "margin:auto; width:50%; text-align:center; font-size:20;");
     initials.setAttribute("style", "margin:auto; width:50%; text-align:center; font-size:20;");
-    inputBox.setAttribute("id", "input");
+    
 
     li1.remove();
     li2.remove();
     li3.remove();
     li4.remove();
 
-    submitBtn.addEventListener("click", function handleClick(event) {
-        var eletest = document.getElementById("test").value
+    submitBtn.addEventListener("click", function handleClick() {
+        var inputInitials = document.getElementById("input-box").value
         // renderHighScores();
-        console.log('-------->', eletest);
-        userInitials(eletest);
+        console.log(inputInitials);
+        userInitials(inputInitials);
         
         highscores(totalScore);
         h1El.remove();
@@ -367,7 +367,7 @@ function renderHighScores() {
 
 
 function userInitials(initials) {
-    localStorage.setItem("input", initials)
+    localStorage.setItem("input-box", initials)
     console.log(localStorage);
 }
 
