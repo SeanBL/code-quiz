@@ -336,7 +336,7 @@ function finalScore() {
 
     submitBtn.addEventListener("click", function handleClick(event) {
         renderHighScores();
-        highscores();
+        highscores(totalScore);
         h1El.remove();
         infoEl1.remove();
         initials.remove();
@@ -357,7 +357,7 @@ function renderHighScores() {
 
 
 
-function highscores() {
+function highscores(score) {
     var highscores = document.createElement("h1");
     var scoreList = document.createElement("ol");
     var userScore = document.createElement("li");
@@ -368,7 +368,8 @@ function highscores() {
     body.appendChild(scoreList);
     scoreList.appendChild(userScore);
 
-    localStorage.setItem("userScore", userScore);
-    console.log(userScore);
+    localStorage.setItem("userScore", score);
+    console.log(localStorage);
+    localStorage.clear();
 
 }
