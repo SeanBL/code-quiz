@@ -309,6 +309,7 @@ function fifthQuestion() {
     var score = document.createElement("span");
     var initials = document.createElement("div");
     var inputBox = document.createElement("input");
+    inputBox.setAttribute("id", "test");
     var submitBtn = document.createElement("button");
 
 function finalScore() {
@@ -328,7 +329,7 @@ function finalScore() {
 
     infoEl1.setAttribute("style", "margin:auto; width:50%; text-align:center; font-size:20;");
     initials.setAttribute("style", "margin:auto; width:50%; text-align:center; font-size:20;");
-    inputBox.setAttribute("id", "input;");
+    inputBox.setAttribute("id", "input");
 
     li1.remove();
     li2.remove();
@@ -336,8 +337,11 @@ function finalScore() {
     li4.remove();
 
     submitBtn.addEventListener("click", function handleClick(event) {
+        var eletest = document.getElementById("test").value
         // renderHighScores();
-        userInitials(inputBox);
+        console.log('-------->', eletest);
+        userInitials(eletest);
+        
         highscores(totalScore);
         h1El.remove();
         infoEl1.remove();
@@ -346,26 +350,27 @@ function finalScore() {
 }
 
 
-// var scoresList = [];
-// function renderHighScores() {
-//     totalScore.textContent = scoreList.length;
+var scoresList = [];
+function renderHighScores() {
+    totalScore.textContent = scoreList.length;
 
-//     for (i = 0; i < scoreList.length; i++) {
-//         var scoreList = scoresList[i];
+    for (i = 0; i < scoreList.length; i++) {
+        var scoreList = scoresList[i];
 
-//         var li = document.createElement("li");
-//         li.textContent = scoreList;
-//         li.setAttribute("data-index", i);
+        var li = document.createElement("li");
+        li.textContent = scoreList;
+        li.setAttribute("data-index", i);
 
-//         totalScore.appendChild(li);
-//     }
+        totalScore.appendChild(li);
+    }
+}
 
-// }
 
 function userInitials(initials) {
     localStorage.setItem("input", initials)
     console.log(localStorage);
 }
+
 
 function highscores(score) {
     var highscores = document.createElement("h1");
