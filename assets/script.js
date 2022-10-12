@@ -368,7 +368,7 @@ function renderHighScores() {
 
 function userInitials(initials) {
     localStorage.setItem("input-box", initials)
-    console.log(localStorage);
+    
 }
 
 
@@ -381,6 +381,4 @@ function highscores(score) {
 
     localStorage.setItem("userScore", score);
     console.log(localStorage);
-    localStorage.clear();
-
 }
