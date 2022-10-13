@@ -342,7 +342,7 @@ function finalScore() {
         console.log(inputInitials);
         userInitials(inputInitials);
         
-        recordedScores(totalScore);
+        records(totalScore);
         h1El.remove();
         infoEl1.remove();
         initials.remove();
@@ -352,7 +352,7 @@ function finalScore() {
 
 
 function userInitials(initials) {
-    localStorage.setItem("input-box", initials)
+    localStorage.setItem("input-box", initials);
     
 }
 
@@ -360,7 +360,7 @@ var testEl = document.createElement("p");
 
 var inputCollection = [];
 
-function recordedScores(score) {
+function records(score) {
     var test = localStorage.getItem("userScore");
     var test2 = localStorage.getItem("input-box");
 
@@ -378,8 +378,6 @@ function recordedScores(score) {
     
 }
 goBackBtn.addEventListener("click", function handleClick(){
-    startGame();
-    highscores.remove();
-    testEl.remove();
-    goBackBtn.remove();
+    window.location.reload();
+    
 });
