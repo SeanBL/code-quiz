@@ -338,7 +338,6 @@ function finalScore() {
 
     submitBtn.addEventListener("click", function handleClick() {
         var inputInitials = document.getElementById("input-box").value
-        renderScores();
         console.log(inputInitials);
         userInitials(inputInitials);
         
@@ -351,24 +350,24 @@ function finalScore() {
 
 
 
-function renderScores() {
-   var postedScore = localStorage.getItem("userScore");
-
-}
-
-
 function userInitials(initials) {
     localStorage.setItem("input-box", initials)
     
 }
 
+var testEl = document.createElement("p");
+
+
 
 function recordedScores(score) {
-    
+    var test = localStorage.getItem("userScore");
+    var test2 = localStorage.getItem("input-box");
 
     highscores.textContent = "High Scores";
+    testEl.textContent = test + " - " + test2;
 
     body.appendChild(highscores);
+    highscores.appendChild(testEl);
 
     localStorage.setItem("userScore", score);
     console.log(localStorage);
