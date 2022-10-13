@@ -311,6 +311,7 @@ function fifthQuestion() {
     var inputBox = document.createElement("input");
     inputBox.setAttribute("id", "input-box");
     var submitBtn = document.createElement("button");
+    var goBackBtn = document.createElement("button");
 
 function finalScore() {
     h1El.textContent = "All done!";
@@ -357,7 +358,7 @@ function userInitials(initials) {
 
 var testEl = document.createElement("p");
 
-
+var inputCollection = [];
 
 function recordedScores(score) {
     var test = localStorage.getItem("userScore");
@@ -365,10 +366,20 @@ function recordedScores(score) {
 
     highscores.textContent = "High Scores";
     testEl.textContent = test + " - " + test2;
+    goBackBtn.textContent = "Go Back";
 
     body.appendChild(highscores);
     highscores.appendChild(testEl);
+    body.appendChild(goBackBtn);
 
     localStorage.setItem("userScore", score);
     console.log(localStorage);
+
+    
 }
+goBackBtn.addEventListener("click", function handleClick(){
+    startGame();
+    highscores.remove();
+    testEl.remove();
+    goBackBtn.remove();
+});
