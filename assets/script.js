@@ -305,7 +305,7 @@ function fifthQuestion() {
 }
 
 
-
+    var highscores = document.createElement("h1");
     var score = document.createElement("span");
     var initials = document.createElement("div");
     var inputBox = document.createElement("input");
@@ -338,11 +338,11 @@ function finalScore() {
 
     submitBtn.addEventListener("click", function handleClick() {
         var inputInitials = document.getElementById("input-box").value
-        // renderHighScores();
+        renderScores();
         console.log(inputInitials);
         userInitials(inputInitials);
         
-        highscores(totalScore);
+        recordedScores(totalScore);
         h1El.remove();
         infoEl1.remove();
         initials.remove();
@@ -350,19 +350,10 @@ function finalScore() {
 }
 
 
-var scoresList = [];
-function renderHighScores() {
-    totalScore.textContent = scoreList.length;
 
-    for (i = 0; i < scoreList.length; i++) {
-        var scoreList = scoresList[i];
+function renderScores() {
+   var postedScore = localStorage.getItem("userScore");
 
-        var li = document.createElement("li");
-        li.textContent = scoreList;
-        li.setAttribute("data-index", i);
-
-        totalScore.appendChild(li);
-    }
 }
 
 
@@ -372,8 +363,8 @@ function userInitials(initials) {
 }
 
 
-function highscores(score) {
-    var highscores = document.createElement("h1");
+function recordedScores(score) {
+    
 
     highscores.textContent = "High Scores";
 
