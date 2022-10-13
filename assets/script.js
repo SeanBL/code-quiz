@@ -361,11 +361,11 @@ var testEl = document.createElement("p");
 var inputCollection = [];
 
 function records(score) {
-    var test = localStorage.getItem("userScore");
+    // var test = localStorage.getItem("userScore");
     var test2 = localStorage.getItem("input-box");
 
     highscores.textContent = "High Scores";
-    testEl.textContent = test + " - " + test2;
+    testEl.textContent = score + " - " + test2;
     goBackBtn.textContent = "Go Back";
 
     body.appendChild(highscores);
