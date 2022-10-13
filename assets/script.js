@@ -356,17 +356,27 @@ function userInitials(initials) {
     
 }
 
-var testEl = document.createElement("p");
+
 
 var inputCollection = [];
 
 function records(score) {
-    // var test = localStorage.getItem("userScore");
     var test2 = localStorage.getItem("input-box");
+    var testEl = document.createElement("p");
 
     highscores.textContent = "High Scores";
     testEl.textContent = score + " - " + test2;
+    inputCollection.push(testEl);
     goBackBtn.textContent = "Go Back";
+
+    for (i = 0; i < inputCollection.length; i++) {
+        var hs = inputCollection[i];
+        
+        testEl.textContent = hs;
+        testEl.setAttribute("data-index", i);
+
+        highscores.appendChild(testEl);
+    }
 
     body.appendChild(highscores);
     highscores.appendChild(testEl);
@@ -375,7 +385,6 @@ function records(score) {
     localStorage.setItem("userScore", score);
     console.log(localStorage);
 
-    
 }
 goBackBtn.addEventListener("click", function handleClick(){
     window.location.reload();
