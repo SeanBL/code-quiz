@@ -340,16 +340,16 @@ function finalScore() {
     function records(newScore) {
         var storedScore = []; 
         var storedScoreString = localStorage.getItem("scores");
+        var storedInitials = localStorage.getItem("input-box");
 
         if (storedScoreString) {
-            storedScore = JSON.parse(storedScoreString);
+            storedScore = JSON.parse(storedScoreString, storedInitials);
         }
-        
+
         highscores.textContent = "High Scores";
         goBackBtn.textContent = "Go Back";
         storedScore.push(newScore);
         storeScore(storedScore);
-        //score.textContent = storedScore.length
         
         body.appendChild(highscores);
         for (i = 0; i < storedScore.length; i++) {
@@ -369,8 +369,6 @@ function finalScore() {
         var inputInitials = document.getElementById("input-box").value
         console.log(inputInitials);
         userInitials(inputInitials);
-        
-        
         records(totalScore);
         h1El.remove();
         infoEl1.remove();
