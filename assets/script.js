@@ -1,4 +1,3 @@
-var nextCard = document.querySelector(".quiz-card");
 var timerCount = document.getElementById("timer");
 var timeLeft = 0;
 var timeInterval;
@@ -337,10 +336,39 @@ function finalScore() {
     li3.remove();
     li4.remove();
 
+
+    function records(newScore) {
+        var storedScore = []; 
+        var storedScoreString = localStorage.getItem("scores");
+
+        if (storedScoreString) {
+            storedScore = JSON.parse(storedScoreString);
+        }
+        
+    
+        goBackBtn.textContent = "Go Back";
+        storedScore.push(newScore);
+        storeScore(storedScore);
+        //score.textContent = storedScore.length
+
+        for (i = 0; i < storedScore.length; i++) {
+            var highscore = storedScore[i];
+
+            var list = document.createElement("p");
+            list.textContent = highscore;
+            list.setAttribute("data-index", i);
+            body.appendChild(list);
+        }
+        body.appendChild(highscores);
+        body.appendChild(goBackBtn);
+    }
+
+
     submitBtn.addEventListener("click", function handleClick() {
         var inputInitials = document.getElementById("input-box").value
         console.log(inputInitials);
         userInitials(inputInitials);
+        
         
         records(totalScore);
         h1El.remove();
@@ -349,44 +377,52 @@ function finalScore() {
     });
 }
 
-
+function storeScore (score) {
+    localStorage.setItem("scores", JSON.stringify(score));
+}
 
 function userInitials(initials) {
-    localStorage.setItem("input-box", initials);
+    localStorage.setItem("input-box", JSON.stringify(initials));
     
 }
 
-
-
-var inputCollection = [];
-
-function records(score) {
-    var test2 = localStorage.getItem("input-box");
-    var testEl = document.createElement("p");
-
-    highscores.textContent = "High Scores";
-    testEl.textContent = score + " - " + test2;
-    inputCollection.push(testEl);
-    goBackBtn.textContent = "Go Back";
-
-    for (i = 0; i < inputCollection.length; i++) {
-        var hs = inputCollection[i];
-        
-        testEl.textContent = hs;
-        testEl.setAttribute("data-index", i);
-
-        highscores.appendChild(testEl);
-    }
-
-    body.appendChild(highscores);
-    highscores.appendChild(testEl);
-    body.appendChild(goBackBtn);
-
-    localStorage.setItem("userScore", score);
-    console.log(localStorage);
-
-}
 goBackBtn.addEventListener("click", function handleClick(){
     window.location.reload();
-    
 });
+
+
+// function records(score) {
+//     var test2 = localStorage.getItem("input-box");
+//     var testEl = document.createElement("p");
+
+//     highscores.textContent = "High Scores";
+//     testEl.textContent = score + " - " + test2;
+//     inputCollection.push(testEl);
+//     goBackBtn.textContent = "Go Back";
+
+//     for (i = 0; i < inputCollection.length; i++) {
+//         var hs = inputCollection[i];
+        
+//         testEl.textContent = hs;
+//         testEl.setAttribute("data-index", i);
+
+//         highscores.appendChild(testEl);
+//     }
+
+//     body.appendChild(highscores);
+//     highscores.appendChild(testEl);
+//     body.appendChild(goBackBtn);
+
+//     localStorage.setItem("userScore", score);
+//     console.log(localStorage);
+
+// }
+
+
+/* sort if(first < second) {
+ first == -1} else if (first > second) {
+ first == 1} else
+ first == 0 
+ 
+ 
+ scoreObj.score + "-" initialObj.initial*/
