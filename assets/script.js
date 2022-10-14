@@ -345,12 +345,13 @@ function finalScore() {
             storedScore = JSON.parse(storedScoreString);
         }
         
-    
+        highscores.textContent = "High Scores";
         goBackBtn.textContent = "Go Back";
         storedScore.push(newScore);
         storeScore(storedScore);
         //score.textContent = storedScore.length
-
+        
+        body.appendChild(highscores);
         for (i = 0; i < storedScore.length; i++) {
             var highscore = storedScore[i];
 
@@ -359,7 +360,7 @@ function finalScore() {
             list.setAttribute("data-index", i);
             body.appendChild(list);
         }
-        body.appendChild(highscores);
+        
         body.appendChild(goBackBtn);
     }
 
