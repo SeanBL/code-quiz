@@ -30,7 +30,7 @@ h1El.setAttribute("style", "margin:auto; width:50%; text-align:center;");
 infoEl1.setAttribute("style", "margin:auto; width:50%; text-align:center; font-size:20;");
 buttonEl.setAttribute("style", "margin:auto; display: flex;");
 timerCount.setAttribute("style", "font-size: 20px;");
-
+//localStorage.clear();
 
 function countDown() {
     timeLeft = 75;
@@ -351,10 +351,11 @@ function finalScore() {
         goBackBtn.textContent = "Go Back";
         clearBtn.textContent = "Clear high scores";
         var combined = {
-            newScore,
-            newInitials
+            score: newScore,
+            initials: newInitials
         };
-        localStorage.setItem("combined-data", JSON.stringify(combined));
+        var stringifiedCombined = JSON.stringify(combined);
+        localStorage.setItem("combined-data", stringifiedCombined);
         storedScore.push(combined);
         console.log(storedScore);
         //storeScore(storedScore);
