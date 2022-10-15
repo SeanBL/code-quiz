@@ -311,6 +311,7 @@ function fifthQuestion() {
     inputBox.setAttribute("id", "input-box");
     var submitBtn = document.createElement("button");
     var goBackBtn = document.createElement("button");
+    var clearBtn = document.createElement("button");
 
 function finalScore() {
     h1El.textContent = "All done!";
@@ -337,24 +338,31 @@ function finalScore() {
     li4.remove();
 
 
-    function records(newScore) {
+    function records(newScore, newInitials) {
         var storedScore = []; 
-        var storedScoreString = localStorage.getItem("scores");
-        var storedInitials = localStorage.getItem("input-box");
+        var storedScoreString = localStorage.getItem("combined-data");
 
         if (storedScoreString) {
-            storedScore = JSON.parse(storedScoreString, storedInitials);
+            storedScore = JSON.parse(storedScoreString);
         }
+        console.log(storedScore);
 
         highscores.textContent = "High Scores";
         goBackBtn.textContent = "Go Back";
-        storedScore.push(newScore);
-        storeScore(storedScore);
+        clearBtn.textContent = "Clear high scores";
+        var combined = {
+            newScore,
+            newInitials
+        };
+        localStorage.setItem("combined-data", JSON.stringify(combined));
+        storedScore.push(combined);
+        console.log(storedScore);
+        //storeScore(storedScore);
         
         body.appendChild(highscores);
         for (i = 0; i < storedScore.length; i++) {
             var highscore = storedScore[i];
-
+            console.log(highscore);
             var list = document.createElement("p");
             list.textContent = highscore;
             list.setAttribute("data-index", i);
@@ -362,28 +370,31 @@ function finalScore() {
         }
         
         body.appendChild(goBackBtn);
+        body.appendChild(clearBtn);
     }
 
 
     submitBtn.addEventListener("click", function handleClick() {
         var inputInitials = document.getElementById("input-box").value
-        console.log(inputInitials);
-        userInitials(inputInitials);
-        records(totalScore);
+        records(totalScore, inputInitials);
         h1El.remove();
         infoEl1.remove();
         initials.remove();
     });
+
+    clearBtn.addEventListener("click", function handleClick() {
+        localStorage.clear();
+    });
 }
 
-function storeScore (score) {
-    localStorage.setItem("scores", JSON.stringify(score));
-}
+// function storeScore (score) {
+//     localStorage.setItem("scores", JSON.stringify(score));
+// }
 
-function userInitials(initials) {
-    localStorage.setItem("input-box", JSON.stringify(initials));
+// function userInitials(initials) {
+//     localStorage.setItem("input-box", JSON.stringify(initials));
     
-}
+// }
 
 goBackBtn.addEventListener("click", function handleClick(){
     window.location.reload();
