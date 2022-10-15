@@ -341,7 +341,7 @@ function finalScore() {
     function records(newScore, newInitials) {
         var storedScore = []; 
         var storedScoreString = localStorage.getItem("combined-data");
-
+        console.log(storedScoreString);
         if (storedScoreString) {
             storedScore = JSON.parse(storedScoreString);
         }
@@ -354,11 +354,11 @@ function finalScore() {
             score: newScore,
             initials: newInitials
         };
-        var stringifiedCombined = JSON.stringify(combined);
-        localStorage.setItem("combined-data", stringifiedCombined);
+        //var stringifiedCombined = JSON.stringify(combined);
+        //localStorage.setItem("combined-data", stringifiedCombined);
         storedScore.push(combined);
         console.log(storedScore);
-        //storeScore(storedScore);
+        combine(storedScore);
         
         body.appendChild(highscores);
         for (i = 0; i < storedScore.length; i++) {
@@ -388,6 +388,9 @@ function finalScore() {
     });
 }
 
+    function combine (scrAndInt) {
+        localStorage.setItem("combined-data", JSON.stringify(scrAndInt));
+    }
 // function storeScore (score) {
 //     localStorage.setItem("scores", JSON.stringify(score));
 // }
