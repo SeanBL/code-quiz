@@ -1,4 +1,5 @@
 var timerCount = document.getElementById("timer");
+var viewHighScores = document.getElementById("viewHighScores");
 var timeLeft = 0;
 var timeInterval;
 var totalScore = 0;
@@ -17,19 +18,21 @@ var li2 = document.createElement("li");
 var li3 = document.createElement("li");
 var li4 = document.createElement("li");
 
+
 h1El.textContent = "Coding Quiz Challenge";
 infoEl1.textContent = "Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score/time by ten seconds!";
 buttonEl.textContent = "Start Quiz";
-timerCount.textContent = "time: " + timeLeft;
+timerCount.textContent = "Time: " + timeLeft;
+
 
 body.appendChild(h1El);
 body.appendChild(infoEl1);
 body.appendChild(buttonEl);
 
-h1El.setAttribute("style", "margin:auto; width:50%; text-align:center;");
-infoEl1.setAttribute("style", "margin:auto; width:50%; text-align:center; font-size:20;");
-buttonEl.setAttribute("style", "margin:auto; display: flex;");
-timerCount.setAttribute("style", "font-size: 20px;");
+h1El.setAttribute("style", "margin:auto; margin-bottom: 10px; width:50%; text-align:center;");
+infoEl1.setAttribute("style", "margin:auto; margin-bottom: 15px; width:60%; text-align:center; font-size:20;");
+buttonEl.setAttribute("style", "margin:auto; display: flex; padding-left: 8px; padding-right: 8px; padding-top: 3px; padding-bottom: 3px; color: white; background-color: #4f0a89; border-radius: 5px;");
+// timerCount.setAttribute("style", "font-size: 20px;");
 //localStorage.clear();
 
 function countDown() {
@@ -37,10 +40,10 @@ function countDown() {
 
     timeInterval = setInterval(function (){
         if (timeLeft >= 1) {
-            timerCount.textContent = "time: " + timeLeft;
+            timerCount.textContent = "Time: " + timeLeft;
             timeLeft--;
         }else {
-            timerCount.textContent = "time: 0";
+            timerCount.textContent = "Time: 0";
             clearInterval(timeInterval);
         }
         
@@ -68,10 +71,10 @@ function startGame () {
     listEl.appendChild(li4);
 
     h1El.setAttribute("style", "margin:auto; width:50%; text-align: left;");
-    li1.setAttribute("style", "display: flex; margin:auto; color: white; background: blue; padding: 10px; width: 25%; border-radius: 5px; margin-top: 10px; font-size: 20px;");
-    li2.setAttribute("style", "display: flex; margin:auto; color: white; background: blue; padding: 10px; width: 25%; border-radius: 5px; margin-top: 10px; font-size: 20px;");
-    li3.setAttribute("style", "display: flex; margin:auto; color: white; background: blue; padding: 10px; width: 25%; border-radius: 5px; margin-top: 10px; font-size: 20px;");
-    li4.setAttribute("style", "display: flex; margin:auto; color: white; background: blue; padding: 10px; width: 25%; border-radius: 5px; margin-top: 10px; font-size: 20px;");
+    li1.setAttribute("style", "display: flex; margin-left:25vw; color: white; background: #4f0a89; padding: 10px; width: 200px; border-radius: 5px; margin-top: 10px; font-size: 20px;");
+    li2.setAttribute("style", "display: flex; margin-left:25vw; color: white; background: #4f0a89; padding: 10px; width: 200px; border-radius: 5px; margin-top: 10px; font-size: 20px;");
+    li3.setAttribute("style", "display: flex; margin-left:25vw; color: white; background: #4f0a89; padding: 10px; width: 200px; border-radius: 5px; margin-top: 10px; font-size: 20px;");
+    li4.setAttribute("style", "display: flex; margin-left:25vw; color: white; background: #4f0a89; padding: 10px; width: 200px; border-radius: 5px; margin-top: 10px; font-size: 20px;");
     
     li1.addEventListener("click", function() {
         timeLeft -= 5;
@@ -125,10 +128,10 @@ function secondQuestion() {
     listEl.appendChild(b3);
     listEl.appendChild(b4);
 
-    b1.setAttribute("style", "display: flex; margin:auto; color: white; background: blue; padding: 10px; width: 25%; border-radius: 5px; margin-top: 10px; font-size: 20px;");
-    b2.setAttribute("style", "display: flex; margin:auto; color: white; background: blue; padding: 10px; width: 25%; border-radius: 5px; margin-top: 10px; font-size: 20px;");
-    b3.setAttribute("style", "display: flex; margin:auto; color: white; background: blue; padding: 10px; width: 25%; border-radius: 5px; margin-top: 10px; font-size: 20px;");
-    b4.setAttribute("style", "display: flex; margin:auto; color: white; background: blue; padding: 10px; width: 25%; border-radius: 5px; margin-top: 10px; font-size: 20px;");
+    b1.setAttribute("style", "display: flex; margin-left:25vw; color: white; background: #4f0a89; padding: 10px; width: 200px; border-radius: 5px; margin-top: 10px; font-size: 20px;");
+    b2.setAttribute("style", "display: flex; margin-left:25vw; color: white; background: #4f0a89; padding: 10px; width: 200px; border-radius: 5px; margin-top: 10px; font-size: 20px;");
+    b3.setAttribute("style", "display: flex; margin-left:25vw; color: white; background: #4f0a89; padding: 10px; width: 200px; border-radius: 5px; margin-top: 10px; font-size: 20px;");
+    b4.setAttribute("style", "display: flex; margin-left:25vw; color: white; background: #4f0a89; padding: 10px; width: 200px; border-radius: 5px; margin-top: 10px; font-size: 20px;");
 
     b1.addEventListener("click", function() {
         timeLeft -= 5;
@@ -174,10 +177,10 @@ function thirdQuestion() {
     listEl.appendChild(c3);
     listEl.appendChild(c4);
 
-    c1.setAttribute("style", "display: flex; margin:auto; color: white; background: blue; padding: 10px; width: 25%; border-radius: 5px; margin-top: 10px; font-size: 20px;");
-    c2.setAttribute("style", "display: flex; margin:auto; color: white; background: blue; padding: 10px; width: 25%; border-radius: 5px; margin-top: 10px; font-size: 20px;");
-    c3.setAttribute("style", "display: flex; margin:auto; color: white; background: blue; padding: 10px; width: 25%; border-radius: 5px; margin-top: 10px; font-size: 20px;");
-    c4.setAttribute("style", "display: flex; margin:auto; color: white; background: blue; padding: 10px; width: 25%; border-radius: 5px; margin-top: 10px; font-size: 20px;");
+    c1.setAttribute("style", "display: flex; margin-left:25vw; color: white; background: #4f0a89; padding: 10px; width: 200px; border-radius: 5px; margin-top: 10px; font-size: 20px;");
+    c2.setAttribute("style", "display: flex; margin-left:25vw; color: white; background: #4f0a89; padding: 10px; width: 200px; border-radius: 5px; margin-top: 10px; font-size: 20px;");
+    c3.setAttribute("style", "display: flex; margin-left:25vw; color: white; background: #4f0a89; padding: 10px; width: 200px; border-radius: 5px; margin-top: 10px; font-size: 20px;");
+    c4.setAttribute("style", "display: flex; margin-left:25vw; color: white; background: #4f0a89; padding: 10px; width: 200px; border-radius: 5px; margin-top: 10px; font-size: 20px;");
 
     c1.addEventListener("click", function() {
         timeLeft -= 5;
@@ -223,11 +226,10 @@ function fourthQuestion() {
     listEl.appendChild(d3);
     listEl.appendChild(d4);
 
-    d1.setAttribute("style", "display: flex; margin:auto; color: white; background: blue; padding: 10px; width: 25%; border-radius: 5px; margin-top: 10px; font-size: 20px;");
-    d2.setAttribute("style", "display: flex; margin:auto; color: white; background: blue; padding: 10px; width: 25%; border-radius: 5px; margin-top: 10px; font-size: 20px;");
-    d3.setAttribute("style", "display: flex; margin:auto; color: white; background: blue; padding: 10px; width: 25%; border-radius: 5px; margin-top: 10px; font-size: 20px;");
-    d4.setAttribute("style", "display: flex; margin:auto; color: white; background: blue; padding: 10px; width: 25%; border-radius: 5px; margin-top: 10px; font-size: 20px;");
-
+    d1.setAttribute("style", "display: flex; margin-left:25vw; color: white; background: #4f0a89; padding: 10px; width: 200px; border-radius: 5px; margin-top: 10px; font-size: 20px;");
+    d2.setAttribute("style", "display: flex; margin-left:25vw; color: white; background: #4f0a89; padding: 10px; width: 200px; border-radius: 5px; margin-top: 10px; font-size: 20px;");
+    d3.setAttribute("style", "display: flex; margin-left:25vw; color: white; background: #4f0a89; padding: 10px; width: 200px; border-radius: 5px; margin-top: 10px; font-size: 20px;");
+    d4.setAttribute("style", "display: flex; margin-left:25vw; color: white; background: #4f0a89; padding: 10px; width: 200px; border-radius: 5px; margin-top: 10px; font-size: 20px;");
     d1.addEventListener("click", function() {
         timeLeft -= 5;
         fifthQuestion();
@@ -272,10 +274,10 @@ function fifthQuestion() {
     listEl.appendChild(e3);
     listEl.appendChild(e4);
 
-    e1.setAttribute("style", "display: flex; margin:auto; color: white; background: blue; padding: 10px; width: 25%; border-radius: 5px; margin-top: 10px; font-size: 20px;");
-    e2.setAttribute("style", "display: flex; margin:auto; color: white; background: blue; padding: 10px; width: 25%; border-radius: 5px; margin-top: 10px; font-size: 20px;");
-    e3.setAttribute("style", "display: flex; margin:auto; color: white; background: blue; padding: 10px; width: 25%; border-radius: 5px; margin-top: 10px; font-size: 20px;");
-    e4.setAttribute("style", "display: flex; margin:auto; color: white; background: blue; padding: 10px; width: 25%; border-radius: 5px; margin-top: 10px; font-size: 20px;");
+    e1.setAttribute("style", "display: flex; margin-left:25vw; color: white; background: #4f0a89; padding: 10px; width: 200px; border-radius: 5px; margin-top: 10px; font-size: 20px;");
+    e2.setAttribute("style", "display: flex; margin-left:25vw; color: white; background: #4f0a89; padding: 10px; width: 200px; border-radius: 5px; margin-top: 10px; font-size: 20px;");
+    e3.setAttribute("style", "display: flex; margin-left:25vw; color: white; background: #4f0a89; padding: 10px; width: 200px; border-radius: 5px; margin-top: 10px; font-size: 20px;");
+    e4.setAttribute("style", "display: flex; margin-left:25vw; color: white; background: #4f0a89; padding: 10px; width: 200px; border-radius: 5px; margin-top: 10px; font-size: 20px;");
 
     e1.addEventListener("click", function() {
         timeLeft -= 5;
@@ -318,7 +320,7 @@ function finalScore() {
     var infoEl1 = document.createElement("p");
 
     infoEl1.textContent = "Your final score is ";
-    score.textContent = totalScore;
+    score.textContent = totalScore + ".";
     initials.textContent = "Enter initials: ";
     submitBtn.textContent = "Submit";
 
@@ -328,8 +330,10 @@ function finalScore() {
     initials.appendChild(inputBox);
     initials.appendChild(submitBtn);
 
-    infoEl1.setAttribute("style", "margin:auto; width:50%; text-align:center; font-size:20;");
-    initials.setAttribute("style", "margin:auto; width:50%; text-align:center; font-size:20;");
+    infoEl1.setAttribute("style", "margin-left: 25vw; margin-bottom: 10px; font-size: 20px;");
+    initials.setAttribute("style", "margin-left: 25vw; font-size: 20px;");
+    inputBox.setAttribute("style", "font-size:20px; border-color: #2ba5ff; margin-right: 10px;")
+    submitBtn.setAttribute("style", "padding-left: 10px; padding-right: 10px; padding-top: 3px; padding-bottom: 3px; border-radius: 5px; color: white; background: #4f0a89;")
     
 
     li1.remove();
@@ -356,8 +360,8 @@ function finalScore() {
             score: newScore,
             initials: newInitials
         };
-        //var stringifiedCombined = JSON.stringify(combined);
-        //localStorage.setItem("combined-data", stringifiedCombined);
+        
+        
         storedScore.push(combined);
         console.log(storedScore);
         storedScore.sort(function (a, b) {return b.score - a.score});
@@ -388,6 +392,9 @@ function finalScore() {
         h1El.remove();
         infoEl1.remove();
         initials.remove();
+        timerCount.remove();
+        viewHighScores.remove();
+        
     });
 
     clearBtn.addEventListener("click", function handleClick() {
