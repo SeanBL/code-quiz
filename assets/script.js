@@ -32,7 +32,7 @@ body.appendChild(buttonEl);
 h1El.setAttribute("style", "margin:auto; margin-bottom: 10px; width:50%; text-align:center;");
 infoEl1.setAttribute("style", "margin:auto; margin-bottom: 15px; width:60%; text-align:center; font-size:20;");
 buttonEl.setAttribute("style", "margin:auto; display: flex; padding-left: 8px; padding-right: 8px; padding-top: 3px; padding-bottom: 3px; color: white; background-color: #4f0a89; border-radius: 5px;");
-// timerCount.setAttribute("style", "font-size: 20px;");
+
 //localStorage.clear();
 
 function countDown() {
@@ -52,6 +52,32 @@ function countDown() {
 
 function stopCountDown() {
     clearInterval(timeInterval);
+}
+
+var correctAnswer;
+var incorrectAnswer;
+function correct() {
+    correctAnswer = document.createElement("div");
+    correctAnswer.textContent = "Correct";
+    body.appendChild(correctAnswer);
+    correctAnswer.setAttribute("style", "margin: 15px 0 0 25vw; padding: 5px; border-top: solid; border-color: gray; width: 600px; font-size: 36px; color: gray;");
+   
+}
+
+function incorrect() {
+    incorrectAnswer = document.createElement("div");
+    incorrectAnswer.textContent = "Incorrect";
+    body.appendChild(incorrectAnswer);
+    incorrectAnswer.setAttribute("style", "margin: 15px 0 0 25vw; padding: 5px; border-top: solid; border-color: gray; width: 600px; font-size: 36px; color: gray;");
+
+}
+//Need to make a conditional. If correct function was called, then remove associated text when next answer is clicked.
+function removeResponse() {
+    if () {
+        correctAnswer.remove();
+    }else {
+        incorrectAnswer.remove();
+    }
 }
 
 function startGame () {
@@ -78,22 +104,22 @@ function startGame () {
     
     li1.addEventListener("click", function() {
         timeLeft -= 5;
-        secondQuestion();
+        secondQuestion(false);
         listEl.remove();
     });
     li2.addEventListener("click", function() {
         timeLeft -= 5;
-        secondQuestion();
+        secondQuestion(false);
         listEl.remove();
     });
     li3.addEventListener("click", function() {
         totalScore += 15;
-        secondQuestion();
+        secondQuestion(true);
         listEl.remove();
     });
     li4.addEventListener("click", function() {
         timeLeft -= 5;
-        secondQuestion();
+        secondQuestion(false);
         listEl.remove();
     }); 
 }
@@ -105,7 +131,7 @@ buttonEl.addEventListener("click", function handleClick() {
     buttonEl.remove();
 });
 
-function secondQuestion() {
+function secondQuestion(response) {
     h1El.textContent = "The condition in an if/else statement is enclosed with _________."
     h1El.setAttribute("style", "margin:auto; width:50%; text-align: left;");
 
@@ -128,34 +154,48 @@ function secondQuestion() {
     listEl.appendChild(b3);
     listEl.appendChild(b4);
 
+    if (response == true) {
+        correct();
+    } else {
+        incorrect();
+    }
+
     b1.setAttribute("style", "display: flex; margin-left:25vw; color: white; background: #4f0a89; padding: 10px; width: 200px; border-radius: 5px; margin-top: 10px; font-size: 20px;");
     b2.setAttribute("style", "display: flex; margin-left:25vw; color: white; background: #4f0a89; padding: 10px; width: 200px; border-radius: 5px; margin-top: 10px; font-size: 20px;");
     b3.setAttribute("style", "display: flex; margin-left:25vw; color: white; background: #4f0a89; padding: 10px; width: 200px; border-radius: 5px; margin-top: 10px; font-size: 20px;");
     b4.setAttribute("style", "display: flex; margin-left:25vw; color: white; background: #4f0a89; padding: 10px; width: 200px; border-radius: 5px; margin-top: 10px; font-size: 20px;");
 
     b1.addEventListener("click", function() {
+        removeResponse();
         timeLeft -= 5;
-        thirdQuestion();
+        thirdQuestion(false);
         listEl.remove();
+        
     });
     b2.addEventListener("click", function() {
+        removeResponse();
         timeLeft -= 5;
-        thirdQuestion();
+        thirdQuestion(false);
         listEl.remove();
+        
     });
     b3.addEventListener("click", function() {
+        removeResponse();
         totalScore += 15;
-        thirdQuestion();
+        thirdQuestion(true);
         listEl.remove();
+        
     });
     b4.addEventListener("click", function() {
+        removeResponse();
         timeLeft -= 5;
-        thirdQuestion();
+        thirdQuestion(false);
         listEl.remove();
+        
     });
 }
 
-function thirdQuestion() {
+function thirdQuestion(response) {
     h1El.textContent = "Arrays in JavaScript can be used to store ________.";
 
     var listEl = document.createElement("ol");
@@ -177,34 +217,48 @@ function thirdQuestion() {
     listEl.appendChild(c3);
     listEl.appendChild(c4);
 
+    if (response == true) {
+        correct();
+    } else {
+        incorrect();
+    }
+
     c1.setAttribute("style", "display: flex; margin-left:25vw; color: white; background: #4f0a89; padding: 10px; width: 200px; border-radius: 5px; margin-top: 10px; font-size: 20px;");
     c2.setAttribute("style", "display: flex; margin-left:25vw; color: white; background: #4f0a89; padding: 10px; width: 200px; border-radius: 5px; margin-top: 10px; font-size: 20px;");
     c3.setAttribute("style", "display: flex; margin-left:25vw; color: white; background: #4f0a89; padding: 10px; width: 200px; border-radius: 5px; margin-top: 10px; font-size: 20px;");
     c4.setAttribute("style", "display: flex; margin-left:25vw; color: white; background: #4f0a89; padding: 10px; width: 200px; border-radius: 5px; margin-top: 10px; font-size: 20px;");
 
     c1.addEventListener("click", function() {
+        removeResponse();
         timeLeft -= 5;
-        fourthQuestion();
+        fourthQuestion(false);
         listEl.remove();
+        
     });
     c2.addEventListener("click", function() {
+        removeResponse();
         timeLeft -= 5;
-        fourthQuestion();
+        fourthQuestion(false);
         listEl.remove();
+        
     });
     c3.addEventListener("click", function() {
+        removeResponse();
         timeLeft -= 5;
-        fourthQuestion();
+        fourthQuestion(false);
         listEl.remove();
+        
     });
     c4.addEventListener("click", function() {
+        removeResponse();
         totalScore += 15;
-        fourthQuestion();
+        fourthQuestion(true);
         listEl.remove();
+        
     });
 }
 
-function fourthQuestion() {
+function fourthQuestion(response) {
     h1El.textContent = "String values must be enclosed within______ when being assigned to variables.";
     
     var listEl = document.createElement("ol");
@@ -226,33 +280,43 @@ function fourthQuestion() {
     listEl.appendChild(d3);
     listEl.appendChild(d4);
 
+    if (response == true) {
+        correct();
+    } else {
+        incorrect();
+    }
+
     d1.setAttribute("style", "display: flex; margin-left:25vw; color: white; background: #4f0a89; padding: 10px; width: 200px; border-radius: 5px; margin-top: 10px; font-size: 20px;");
     d2.setAttribute("style", "display: flex; margin-left:25vw; color: white; background: #4f0a89; padding: 10px; width: 200px; border-radius: 5px; margin-top: 10px; font-size: 20px;");
     d3.setAttribute("style", "display: flex; margin-left:25vw; color: white; background: #4f0a89; padding: 10px; width: 200px; border-radius: 5px; margin-top: 10px; font-size: 20px;");
     d4.setAttribute("style", "display: flex; margin-left:25vw; color: white; background: #4f0a89; padding: 10px; width: 200px; border-radius: 5px; margin-top: 10px; font-size: 20px;");
     d1.addEventListener("click", function() {
+        removeResponse();
         timeLeft -= 5;
-        fifthQuestion();
+        fifthQuestion(false);
         listEl.remove();
     });
     d2.addEventListener("click", function() {
+        removeResponse();
         timeLeft -= 5;
-        fifthQuestion();
+        fifthQuestion(false);
         listEl.remove();
     });
     d3.addEventListener("click", function() {
+        removeResponse();
         totalScore += 15;
-        fifthQuestion();
+        fifthQuestion(true);
         listEl.remove();
     });
     d4.addEventListener("click", function() {
+        removeResponse();
         timeLeft -= 5;
-        fifthQuestion();
+        fifthQuestion(false);
         listEl.remove();
     });
 }
 
-function fifthQuestion() {
+function fifthQuestion(response) {
     h1El.textContent = "A very useful tool used during development and debugging for printing content to the debugger is:";
     
     var listEl = document.createElement("ol");
@@ -274,32 +338,42 @@ function fifthQuestion() {
     listEl.appendChild(e3);
     listEl.appendChild(e4);
 
+    if (response == true) {
+        correct();
+    } else {
+        incorrect();
+    }
+
     e1.setAttribute("style", "display: flex; margin-left:25vw; color: white; background: #4f0a89; padding: 10px; width: 200px; border-radius: 5px; margin-top: 10px; font-size: 20px;");
     e2.setAttribute("style", "display: flex; margin-left:25vw; color: white; background: #4f0a89; padding: 10px; width: 200px; border-radius: 5px; margin-top: 10px; font-size: 20px;");
     e3.setAttribute("style", "display: flex; margin-left:25vw; color: white; background: #4f0a89; padding: 10px; width: 200px; border-radius: 5px; margin-top: 10px; font-size: 20px;");
     e4.setAttribute("style", "display: flex; margin-left:25vw; color: white; background: #4f0a89; padding: 10px; width: 200px; border-radius: 5px; margin-top: 10px; font-size: 20px;");
 
     e1.addEventListener("click", function() {
+        removeResponse();
         timeLeft -= 5;
-        finalScore();
+        finalScore(false);
         listEl.remove();
         stopCountDown();
     });
     e2.addEventListener("click", function() {
+        removeResponse();
         timeLeft -= 5;
-        finalScore();
+        finalScore(false);
         listEl.remove();
         stopCountDown();
     });
     e3.addEventListener("click", function() {
+        removeResponse();
         timeLeft -= 5;
-        finalScore();
+        finalScore(false);
         listEl.remove();
         stopCountDown();
     });
     e4.addEventListener("click", function() {
+        removeResponse();
         totalScore += 15;
-        finalScore();
+        finalScore(true);
         listEl.remove();
         stopCountDown();
     });
@@ -315,7 +389,7 @@ function fifthQuestion() {
     var goBackBtn = document.createElement("button");
     var clearBtn = document.createElement("button");
 
-function finalScore() {
+function finalScore(response) {
     h1El.textContent = "All done!";
     var infoEl1 = document.createElement("p");
 
@@ -329,6 +403,12 @@ function finalScore() {
     body.appendChild(initials);
     initials.appendChild(inputBox);
     initials.appendChild(submitBtn);
+
+    if (response == true) {
+        correct();
+    } else {
+        incorrect();
+    }
 
     infoEl1.setAttribute("style", "margin-left: 25vw; margin-bottom: 10px; font-size: 20px;");
     initials.setAttribute("style", "margin-left: 25vw; font-size: 20px;");
@@ -348,8 +428,8 @@ function finalScore() {
         infoEl1.remove();
         initials.remove();
         timerCount.remove();
-        viewHighScores.remove();
-        
+        viewHighScores.remove(); 
+        removeResponse(); 
     });
 
     
