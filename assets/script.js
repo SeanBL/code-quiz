@@ -361,6 +361,8 @@ function finalScore() {
         storedScore.push(combined);
         console.log(storedScore);
         storedScore.sort(function (a, b) {return b.score - a.score});
+        storedScore.splice(5);
+        
         combine(storedScore);
         
         body.appendChild(highscores);
