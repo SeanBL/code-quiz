@@ -342,10 +342,12 @@ function finalScore() {
         var storedScore = []; 
         var storedScoreString = localStorage.getItem("combined-data");
         console.log(storedScoreString);
+        console.log(localStorage.getItem("combined-data"));
         if (storedScoreString) {
             storedScore = JSON.parse(storedScoreString);
         }
         console.log(storedScore);
+        console.log(JSON.parse(storedScoreString));
 
         highscores.textContent = "High Scores";
         goBackBtn.textContent = "Go Back";
@@ -358,14 +360,17 @@ function finalScore() {
         //localStorage.setItem("combined-data", stringifiedCombined);
         storedScore.push(combined);
         console.log(storedScore);
+        storedScore.sort(function (a, b) {return b.score - a.score});
         combine(storedScore);
         
         body.appendChild(highscores);
         for (i = 0; i < storedScore.length; i++) {
             var highscore = storedScore[i];
             console.log(highscore);
+            console.log(highscore.score + highscore.initials);
+            
             var list = document.createElement("p");
-            list.textContent = highscore;
+            list.textContent = highscore.score + " - " + highscore.initials;
             list.setAttribute("data-index", i);
             body.appendChild(list);
         }
@@ -389,7 +394,11 @@ function finalScore() {
 }
 
     function combine (scrAndInt) {
-        localStorage.setItem("combined-data", JSON.stringify(scrAndInt));
+        var convertObj = JSON.stringify(scrAndInt);
+        localStorage.setItem("combined-data", convertObj);
+        console.log(JSON.stringify(scrAndInt));
+        console.log(convertObj);
+        console.log(scrAndInt);
     }
 // function storeScore (score) {
 //     localStorage.setItem("scores", JSON.stringify(score));
