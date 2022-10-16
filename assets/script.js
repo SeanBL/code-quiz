@@ -87,7 +87,7 @@ function startGame () {
         listEl.remove();
     });
     li3.addEventListener("click", function() {
-        totalScore++;
+        totalScore += 15;
         secondQuestion();
         listEl.remove();
     });
@@ -99,7 +99,7 @@ function startGame () {
 }
 
 
-buttonEl.addEventListener("click", function handleClick(event) {
+buttonEl.addEventListener("click", function handleClick() {
     countDown();
     startGame();
     buttonEl.remove();
@@ -144,7 +144,7 @@ function secondQuestion() {
         listEl.remove();
     });
     b3.addEventListener("click", function() {
-        totalScore++;
+        totalScore += 15;
         thirdQuestion();
         listEl.remove();
     });
@@ -198,7 +198,7 @@ function thirdQuestion() {
         listEl.remove();
     });
     c4.addEventListener("click", function() {
-        totalScore++;
+        totalScore += 15;
         fourthQuestion();
         listEl.remove();
     });
@@ -241,7 +241,7 @@ function fourthQuestion() {
         listEl.remove();
     });
     d3.addEventListener("click", function() {
-        totalScore++;
+        totalScore += 15;
         fifthQuestion();
         listEl.remove();
     });
@@ -298,7 +298,7 @@ function fifthQuestion() {
         stopCountDown();
     });
     e4.addEventListener("click", function() {
-        totalScore++;
+        totalScore += 15;
         finalScore();
         listEl.remove();
         stopCountDown();
@@ -306,7 +306,7 @@ function fifthQuestion() {
 }
 
 
-    var highscores = document.createElement("h1");
+    
     var score = document.createElement("span");
     var initials = document.createElement("div");
     var inputBox = document.createElement("input");
@@ -332,59 +332,14 @@ function finalScore() {
 
     infoEl1.setAttribute("style", "margin-left: 25vw; margin-bottom: 10px; font-size: 20px;");
     initials.setAttribute("style", "margin-left: 25vw; font-size: 20px;");
-    inputBox.setAttribute("style", "font-size:20px; border-color: #2ba5ff; margin-right: 10px;")
-    submitBtn.setAttribute("style", "padding-left: 10px; padding-right: 10px; padding-top: 3px; padding-bottom: 3px; border-radius: 5px; color: white; background: #4f0a89;")
+    inputBox.setAttribute("style", "font-size:20px; border-color: #2ba5ff; margin-right: 10px;");
+    submitBtn.setAttribute("style", "padding-left: 10px; padding-right: 10px; padding-top: 3px; padding-bottom: 3px; border-radius: 5px; color: white; background: #4f0a89;");
     
 
     li1.remove();
     li2.remove();
     li3.remove();
     li4.remove();
-
-
-    function records(newScore, newInitials) {
-        var storedScore = []; 
-        var storedScoreString = localStorage.getItem("combined-data");
-        console.log(storedScoreString);
-        console.log(localStorage.getItem("combined-data"));
-        if (storedScoreString) {
-            storedScore = JSON.parse(storedScoreString);
-        }
-        console.log(storedScore);
-        console.log(JSON.parse(storedScoreString));
-
-        highscores.textContent = "High Scores";
-        goBackBtn.textContent = "Go Back";
-        clearBtn.textContent = "Clear high scores";
-        var combined = {
-            score: newScore,
-            initials: newInitials
-        };
-        
-        
-        storedScore.push(combined);
-        console.log(storedScore);
-        storedScore.sort(function (a, b) {return b.score - a.score});
-        storedScore.splice(5);
-        
-        combine(storedScore);
-        
-        body.appendChild(highscores);
-        for (i = 0; i < storedScore.length; i++) {
-            var highscore = storedScore[i];
-            console.log(highscore);
-            console.log(highscore.score + highscore.initials);
-            
-            var list = document.createElement("p");
-            list.textContent = highscore.score + " - " + highscore.initials;
-            list.setAttribute("data-index", i);
-            body.appendChild(list);
-        }
-        
-        body.appendChild(goBackBtn);
-        body.appendChild(clearBtn);
-    }
-
 
     submitBtn.addEventListener("click", function handleClick() {
         var inputInitials = document.getElementById("input-box").value
@@ -397,64 +352,67 @@ function finalScore() {
         
     });
 
-    clearBtn.addEventListener("click", function handleClick() {
-        localStorage.clear();
-    });
+    
 }
+
+
+
+function records(newScore, newInitials) {
+    var scoreTitle = document.createElement("h1");
+    var scoreList = document.createElement("ol");
+    
+    var storedScore = []; 
+    var storedScoreString = localStorage.getItem("combined-data");
+   
+    if (storedScoreString) {
+        storedScore = JSON.parse(storedScoreString);
+    }
+
+    var combined = {
+        score: newScore,
+        initials: newInitials
+    };
+    
+    storedScore.push(combined);
+    storedScore.sort(function (a, b) {return b.score - a.score});
+    storedScore.splice(5);
+    combine(storedScore);
 
     function combine (scrAndInt) {
         var convertObj = JSON.stringify(scrAndInt);
         localStorage.setItem("combined-data", convertObj);
-        console.log(JSON.stringify(scrAndInt));
-        console.log(convertObj);
-        console.log(scrAndInt);
     }
-// function storeScore (score) {
-//     localStorage.setItem("scores", JSON.stringify(score));
-// }
 
-// function userInitials(initials) {
-//     localStorage.setItem("input-box", JSON.stringify(initials));
+    scoreTitle.textContent = "High Scores";
+    goBackBtn.textContent = "Go Back";
+    clearBtn.textContent = "Clear high scores";
     
-// }
+    body.appendChild(scoreTitle);
+    body.appendChild(scoreList);
+    for (i = 0; i < storedScore.length; i++) {
+        var highscore = storedScore[i];
+        var list = document.createElement("li");
+        list.textContent = highscore.initials + " - " + highscore.score;
+        list.setAttribute("data-index", i);
+        list.setAttribute("type", 1);
+        list.setAttribute("style", "margin-left: 25vw; margin-bottom: 10px; padding: 5px; width: 500px; background: #ddc4fd;");
+        body.appendChild(list);
+    }
+    
+    body.appendChild(goBackBtn);
+    body.appendChild(clearBtn);
+
+    scoreTitle.setAttribute("style", "margin-left: 25vw; margin-top: 100px; margin-bottom: 15px; font-size: 28px;");
+    goBackBtn.setAttribute("style", "margin: 0vw 5px 0vw 25vw; padding: 3px 10px 3px 10px; border-radius: 3px; border-color: transparent; color: white; background: #4f0a89;")
+    clearBtn.setAttribute("style", "padding: 3px 10px 3px 10px; border-radius: 3px; border-color: transparent; color: white; background: #4f0a89;")
+}
 
 goBackBtn.addEventListener("click", function handleClick(){
     window.location.reload();
 });
 
-
-// function records(score) {
-//     var test2 = localStorage.getItem("input-box");
-//     var testEl = document.createElement("p");
-
-//     highscores.textContent = "High Scores";
-//     testEl.textContent = score + " - " + test2;
-//     inputCollection.push(testEl);
-//     goBackBtn.textContent = "Go Back";
-
-//     for (i = 0; i < inputCollection.length; i++) {
-//         var hs = inputCollection[i];
-        
-//         testEl.textContent = hs;
-//         testEl.setAttribute("data-index", i);
-
-//         highscores.appendChild(testEl);
-//     }
-
-//     body.appendChild(highscores);
-//     highscores.appendChild(testEl);
-//     body.appendChild(goBackBtn);
-
-//     localStorage.setItem("userScore", score);
-//     console.log(localStorage);
-
-// }
+clearBtn.addEventListener("click", function handleClick() {
+    localStorage.clear();
+});
 
 
-/* sort if(first < second) {
- first == -1} else if (first > second) {
- first == 1} else
- first == 0 
- 
- 
- scoreObj.score + "-" initialObj.initial*/
