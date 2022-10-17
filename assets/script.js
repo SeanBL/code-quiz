@@ -1,6 +1,6 @@
 var timerCount = document.getElementById("timer");
 var viewHighScores = document.getElementById("viewHighScores");
-var answerChoice = document.getElementById("answer-choice");
+//var answerChoice = document.getElementById("answer-choice");
 var timeLeft = 0;
 var timeInterval;
 var totalScore = 0;
@@ -9,7 +9,8 @@ var body = document.body;
 var h1El = document.createElement("h1");
 var infoEl1 = document.createElement("p");
 var buttonEl = document.createElement("button");
-var answersEl = document.createElement("div");
+var answerChoice = document.createElement("div");
+
 
 
 var listEl = document.createElement("ol");
@@ -29,6 +30,7 @@ timerCount.textContent = "Time: " + timeLeft;
 body.appendChild(h1El);
 body.appendChild(infoEl1);
 body.appendChild(buttonEl);
+
 
 h1El.setAttribute("style", "margin:auto; margin-bottom: 10px; width:50%; text-align:center;");
 infoEl1.setAttribute("style", "margin:auto; margin-bottom: 15px; width:60%; text-align:center; font-size:20;");
@@ -62,6 +64,7 @@ function correct() {
     correctAnswer = document.createElement("div");
     correctAnswer.textContent = "Correct";
     answerChoice.appendChild(correctAnswer);
+    body.appendChild(answerChoice);
     correctAnswer.setAttribute("style", "margin: 15px 0 0 25vw; padding: 5px; border-top: solid; border-color: gray; width: 600px; font-size: 36px; color: gray;");
     
 }
@@ -71,6 +74,7 @@ function incorrect() {
     incorrectAnswer = document.createElement("div");
     incorrectAnswer.textContent = "Incorrect";
     answerChoice.appendChild(incorrectAnswer);
+    body.appendChild(answerChoice);
     incorrectAnswer.setAttribute("style", "margin: 15px 0 0 25vw; padding: 5px; border-top: solid; border-color: gray; width: 600px; font-size: 36px; color: gray;");
 
 }
@@ -409,6 +413,7 @@ function finalScore(response) {
         initials.remove();
         timerCount.remove();
         viewHighScores.remove(); 
+        answerChoice.innerHTML = "";
     });
 
     
