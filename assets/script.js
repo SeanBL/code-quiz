@@ -1,5 +1,6 @@
 var timerCount = document.getElementById("timer");
 var viewHighScores = document.getElementById("viewHighScores");
+var answerChoice = document.getElementById("answer-choice");
 var timeLeft = 0;
 var timeInterval;
 var totalScore = 0;
@@ -57,28 +58,23 @@ function stopCountDown() {
 var correctAnswer;
 var incorrectAnswer;
 function correct() {
+    answerChoice.innerHTML = "";
     correctAnswer = document.createElement("div");
     correctAnswer.textContent = "Correct";
-    body.appendChild(correctAnswer);
+    answerChoice.appendChild(correctAnswer);
     correctAnswer.setAttribute("style", "margin: 15px 0 0 25vw; padding: 5px; border-top: solid; border-color: gray; width: 600px; font-size: 36px; color: gray;");
-   
+    
 }
 
 function incorrect() {
+    answerChoice.innerHTML = "";
     incorrectAnswer = document.createElement("div");
     incorrectAnswer.textContent = "Incorrect";
-    body.appendChild(incorrectAnswer);
+    answerChoice.appendChild(incorrectAnswer);
     incorrectAnswer.setAttribute("style", "margin: 15px 0 0 25vw; padding: 5px; border-top: solid; border-color: gray; width: 600px; font-size: 36px; color: gray;");
 
 }
-//Need to make a conditional. If correct function was called, then remove associated text when next answer is clicked.
-function removeResponse() {
-    if () {
-        correctAnswer.remove();
-    }else {
-        incorrectAnswer.remove();
-    }
-}
+
 
 function startGame () {
     h1El.textContent = "Commonly used data types DO Not Include:"
@@ -166,28 +162,24 @@ function secondQuestion(response) {
     b4.setAttribute("style", "display: flex; margin-left:25vw; color: white; background: #4f0a89; padding: 10px; width: 200px; border-radius: 5px; margin-top: 10px; font-size: 20px;");
 
     b1.addEventListener("click", function() {
-        removeResponse();
         timeLeft -= 5;
         thirdQuestion(false);
         listEl.remove();
         
     });
     b2.addEventListener("click", function() {
-        removeResponse();
         timeLeft -= 5;
         thirdQuestion(false);
         listEl.remove();
         
     });
     b3.addEventListener("click", function() {
-        removeResponse();
         totalScore += 15;
         thirdQuestion(true);
         listEl.remove();
         
     });
     b4.addEventListener("click", function() {
-        removeResponse();
         timeLeft -= 5;
         thirdQuestion(false);
         listEl.remove();
@@ -229,28 +221,24 @@ function thirdQuestion(response) {
     c4.setAttribute("style", "display: flex; margin-left:25vw; color: white; background: #4f0a89; padding: 10px; width: 200px; border-radius: 5px; margin-top: 10px; font-size: 20px;");
 
     c1.addEventListener("click", function() {
-        removeResponse();
         timeLeft -= 5;
         fourthQuestion(false);
         listEl.remove();
         
     });
     c2.addEventListener("click", function() {
-        removeResponse();
         timeLeft -= 5;
         fourthQuestion(false);
         listEl.remove();
         
     });
     c3.addEventListener("click", function() {
-        removeResponse();
         timeLeft -= 5;
         fourthQuestion(false);
         listEl.remove();
         
     });
     c4.addEventListener("click", function() {
-        removeResponse();
         totalScore += 15;
         fourthQuestion(true);
         listEl.remove();
@@ -291,25 +279,21 @@ function fourthQuestion(response) {
     d3.setAttribute("style", "display: flex; margin-left:25vw; color: white; background: #4f0a89; padding: 10px; width: 200px; border-radius: 5px; margin-top: 10px; font-size: 20px;");
     d4.setAttribute("style", "display: flex; margin-left:25vw; color: white; background: #4f0a89; padding: 10px; width: 200px; border-radius: 5px; margin-top: 10px; font-size: 20px;");
     d1.addEventListener("click", function() {
-        removeResponse();
         timeLeft -= 5;
         fifthQuestion(false);
         listEl.remove();
     });
     d2.addEventListener("click", function() {
-        removeResponse();
         timeLeft -= 5;
         fifthQuestion(false);
         listEl.remove();
     });
     d3.addEventListener("click", function() {
-        removeResponse();
         totalScore += 15;
         fifthQuestion(true);
         listEl.remove();
     });
     d4.addEventListener("click", function() {
-        removeResponse();
         timeLeft -= 5;
         fifthQuestion(false);
         listEl.remove();
@@ -350,28 +334,24 @@ function fifthQuestion(response) {
     e4.setAttribute("style", "display: flex; margin-left:25vw; color: white; background: #4f0a89; padding: 10px; width: 200px; border-radius: 5px; margin-top: 10px; font-size: 20px;");
 
     e1.addEventListener("click", function() {
-        removeResponse();
         timeLeft -= 5;
         finalScore(false);
         listEl.remove();
         stopCountDown();
     });
     e2.addEventListener("click", function() {
-        removeResponse();
         timeLeft -= 5;
         finalScore(false);
         listEl.remove();
         stopCountDown();
     });
     e3.addEventListener("click", function() {
-        removeResponse();
         timeLeft -= 5;
         finalScore(false);
         listEl.remove();
         stopCountDown();
     });
     e4.addEventListener("click", function() {
-        removeResponse();
         totalScore += 15;
         finalScore(true);
         listEl.remove();
@@ -429,7 +409,6 @@ function finalScore(response) {
         initials.remove();
         timerCount.remove();
         viewHighScores.remove(); 
-        removeResponse(); 
     });
 
     
