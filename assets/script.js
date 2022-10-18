@@ -108,7 +108,9 @@ function incorrect() {
     incorrectAnswer.setAttribute("style", "margin: 15px 0 0 25vw; padding: 5px; border-top: solid; border-color: gray; width: 600px; font-size: 36px; color: gray;");
 }
 
-//This function starts the quiz for the user once the "Start Quiz" button has been clicked.
+/*This function starts the quiz for the user once the "Start Quiz" button has been clicked.
+Elements wtih text were appended to the body and event listeners were added to each answer text.
+Time is deducted for wrong answers and points are rewarded for the correct answer.*/
 function startGame () {
     h1El.textContent = "Commonly used data types DO Not Include:"
     infoEl1.textContent = "";
@@ -153,12 +155,17 @@ function startGame () {
     }); 
 }
 
+//The start game and count down timer function is called when this event listner is actived.
 buttonEl.addEventListener("click", function handleClick() {
     countDown();
     startGame();
     buttonEl.remove();
 });
 
+/*This function is called when one of the first answers is picked. An "if" statement is included to provide 
+a response to the user's answer. If the correct answer is chosen, the "correct" function is called, and a line
+of text is presented underneath the list of answers. If the user's answer was incorrect, the incorrect function
+is called. */
 function secondQuestion(response) {
     h1El.textContent = "The condition in an if/else statement is enclosed with _________."
     h1El.setAttribute("style", "margin:auto; width:50%; text-align: left;");
@@ -219,6 +226,10 @@ function secondQuestion(response) {
     });
 }
 
+/*This function represents the third question and is called in the previous function along with a "false" or "true"
+argument in the event listeners. The "response" parameter in the "thirdQuestion" function is also placed 
+in the conditional of the "if" statement, and takes in the "true" or "false" argument to determine the correct
+answer response. */
 function thirdQuestion(response) {
     h1El.textContent = "Arrays in JavaScript can be used to store ________.";
 
@@ -278,6 +289,7 @@ function thirdQuestion(response) {
     });
 }
 
+//This function represents the fourth question and follows the same logic as the previous function.
 function fourthQuestion(response) {
     h1El.textContent = "String values must be enclosed within______ when being assigned to variables.";
     
@@ -333,6 +345,9 @@ function fourthQuestion(response) {
     });
 }
 
+/*This function runs the code that displays the fifth and final question along with answer choices. The logic
+follows the dame pattern as the previous question functions. The event listeners call functions that determine
+the answer response and a function that pauses the timer after the final question is answered. */ 
 function fifthQuestion(response) {
     h1El.textContent = "A very useful tool used during development and debugging for printing content to the debugger is:";
     
@@ -392,17 +407,22 @@ function fifthQuestion(response) {
     });
 }
 
+/*This variable for the back button is global since the timerOut function
+and the records function need access to this variable.*/
+var goBackBtn = document.createElement("button");
+
+/*This function allows the user to view their final score, and prompts them
+to write their initials in the input box. An event listener is added to the
+submit button which calls the record function and initiates the process of
+adding the score and the user's initials to the high score list. */
+function finalScore(response) {
+    var infoEl1 = document.createElement("p");
     var score = document.createElement("span");
     var initials = document.createElement("div");
     var inputBox = document.createElement("input");
     var submitBtn = document.createElement("button");
-    var goBackBtn = document.createElement("button");
-    var clearBtn = document.createElement("button");
-
-function finalScore(response) {
+    
     h1El.textContent = "All done!";
-    var infoEl1 = document.createElement("p");
-
     infoEl1.textContent = "Your final score is ";
     score.textContent = totalScore + ".";
     initials.textContent = "Enter initials: ";
@@ -431,6 +451,9 @@ function finalScore(response) {
     li3.remove();
     li4.remove();
 
+    /*The inputInitials variable is assigned the value placed in the input box by the user. The records function
+    holds to arguments. The user's total score value and the user's initials value will be passed into the records
+    function's parameters.*/
     submitBtn.addEventListener("click", function handleClick() {
         var inputInitials = document.getElementById("input-box").value
         records(totalScore, inputInitials);
@@ -444,9 +467,20 @@ function finalScore(response) {
     }); 
 }
 
+/*The records function holds two parameters which takes the the user's score and initials. Those values are then
+passed into the "combined" variable which has been defined as an object holding those two values. The combined 
+variable with it's two values is pushed to the storedScore array. The number values in the array are sorted
+in descending order by the sort function, and the array is limited to five entries by the splice method. The
+values are then passed through the parameters of the combine function where the values are converted into a string
+value before being set into local storage. The values are then taken out of local storage and placed in the 
+storedScoreString variable where the string values are converted into JavaScript objects. Those values are then
+stored in the storedScore array. A for loop iterates through the objects of the array and appends each pair of
+of the user's score and initials to the high scores list in the correct descending order expected of a high scores
+list.*/
 function records(newScore, newInitials) {
     var scoreTitle = document.createElement("h1");
     var scoreList = document.createElement("ol");
+    var clearBtn = document.createElement("button");
     
     var storedScore = []; 
     var storedScoreString = localStorage.getItem("combined-data");
@@ -460,6 +494,10 @@ function records(newScore, newInitials) {
         initials: newInitials
     };
     
+    /*This if statement allows the records function to be called again by the viewHighScore event listener
+    without adding unnecessary values to the highscores list. The event listener calls the records function 
+    with an argument value of -1 which passes thorugh to the new newScore parameter. The condition is read as
+    false and the value is not added to the array.*/
     if (newScore >= 0) {
         storedScore.push(combined);
     }
@@ -494,14 +532,20 @@ function records(newScore, newInitials) {
     scoreTitle.setAttribute("style", "margin-left: 25vw; margin-top: 100px; margin-bottom: 15px; font-size: 28px;");
     goBackBtn.setAttribute("style", "margin: 0vw 5px 0vw 25vw; padding: 3px 10px 3px 10px; border-radius: 3px; border-color: transparent; color: white; background: #4f0a89;")
     clearBtn.setAttribute("style", "padding: 3px 10px 3px 10px; border-radius: 3px; border-color: transparent; color: white; background: #4f0a89;")
+
+    /*This clearBtn event listener clears all the scores stored in local storage. The high score list is cleared
+    once the user clicks the "go back" button. */
+    clearBtn.addEventListener("click", function handleClick() {
+        localStorage.clear();
+    });
+
 }
 
+//This event listener is kept global since the viewHighScores event listener and the records function require access to this function.
 goBackBtn.addEventListener("click", function handleClick(){
     window.location.reload();
 });
 
-clearBtn.addEventListener("click", function handleClick() {
-    localStorage.clear();
-});
+
 
 
