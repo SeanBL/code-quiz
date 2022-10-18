@@ -1,43 +1,66 @@
 var timerCount = document.getElementById("timer");
 var viewHighScores = document.getElementById("viewHighScores");
-//var answerChoice = document.getElementById("answer-choice");
 var timeLeft = 0;
 var timeInterval;
 var totalScore = 0;
-
 var body = document.body;
+
+//These variables are being declared and getting defined with elements for the html page
 var h1El = document.createElement("h1");
+var outOfTime = document.createElement("h1");
 var infoEl1 = document.createElement("p");
 var buttonEl = document.createElement("button");
 var answerChoice = document.createElement("div");
-
-
-
 var listEl = document.createElement("ol");
-
 var li1 = document.createElement("li");
 var li2 = document.createElement("li");
 var li3 = document.createElement("li");
 var li4 = document.createElement("li");
 
-
+function homePage(){
+//These provide all the text content for the home page.
 h1El.textContent = "Coding Quiz Challenge";
 infoEl1.textContent = "Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score/time by ten seconds!";
 buttonEl.textContent = "Start Quiz";
 timerCount.textContent = "Time: " + timeLeft;
 
-
+//These variables with their assigned elements are getting appended to the the body of the html document
 body.appendChild(h1El);
 body.appendChild(infoEl1);
 body.appendChild(buttonEl);
 
-
+//This sets up the style, look, and positioning of the text and buttons.
 h1El.setAttribute("style", "margin:auto; margin-bottom: 10px; width:50%; text-align:center;");
 infoEl1.setAttribute("style", "margin:auto; margin-bottom: 15px; width:60%; text-align:center; font-size:20;");
 buttonEl.setAttribute("style", "margin:auto; display: flex; padding-left: 8px; padding-right: 8px; padding-top: 3px; padding-bottom: 3px; color: white; background-color: #4f0a89; border-radius: 5px;");
+}
 
-//localStorage.clear();
+/*This adds a clickable function to the "view high scores" text, so users can access the highscores list
+at anytime. The argument in the records function is set to -1, so when the records function
+is called, the value is not stored in the storedScores array. This allows the user to simply
+view the highscores using the records function without adding another value to the highscores list.*/
+viewHighScores.addEventListener("click", function handleClick() {
+    body.innerHTML = "";
+    records(-1,"");
+});
+homePage();
 
+/*This function alerts the user that time has run out and allows the user to submit
+their current score. */
+function timerOut() {
+    body.innerHTML = "";
+    
+    outOfTime.textContent = "Out of Time";
+    goBackBtn.textContent = "Go Back";
+    
+    body.appendChild(outOfTime);
+    
+    outOfTime.setAttribute("style", "margin-top: 30vh; margin-bottom: 15px; text-align:center;");
+    finalScore();
+    answerChoice.remove();
+}
+
+/*This function sets and starts the count down timer when the user starts the quiz.*/
 function countDown() {
     timeLeft = 75;
 
@@ -48,17 +71,23 @@ function countDown() {
         }else {
             timerCount.textContent = "Time: 0";
             clearInterval(timeInterval);
+            timerOut();
         }
         
     }, 1000);
 }
 
+/*This function stops the count down if the user has completed the quiz ahead of time.
+In the future, it would be nice to add the time to the high scores list.*/
 function stopCountDown() {
     clearInterval(timeInterval);
 }
 
 var correctAnswer;
 var incorrectAnswer;
+
+/*This function is a response for the user. If the user makes a correct answer choice,
+text will pop up letting the user know they got the correct answer.*/
 function correct() {
     answerChoice.innerHTML = "";
     correctAnswer = document.createElement("div");
@@ -66,9 +95,10 @@ function correct() {
     answerChoice.appendChild(correctAnswer);
     body.appendChild(answerChoice);
     correctAnswer.setAttribute("style", "margin: 15px 0 0 25vw; padding: 5px; border-top: solid; border-color: gray; width: 600px; font-size: 36px; color: gray;");
-    
 }
 
+/*This function is a response for the user. If the user makes an incorrect answer choice,
+text will pop up letting the user know they got the incorrect answer.*/
 function incorrect() {
     answerChoice.innerHTML = "";
     incorrectAnswer = document.createElement("div");
@@ -76,10 +106,9 @@ function incorrect() {
     answerChoice.appendChild(incorrectAnswer);
     body.appendChild(answerChoice);
     incorrectAnswer.setAttribute("style", "margin: 15px 0 0 25vw; padding: 5px; border-top: solid; border-color: gray; width: 600px; font-size: 36px; color: gray;");
-
 }
 
-
+//This function starts the quiz for the user once the "Start Quiz" button has been clicked.
 function startGame () {
     h1El.textContent = "Commonly used data types DO Not Include:"
     infoEl1.textContent = "";
@@ -123,7 +152,6 @@ function startGame () {
         listEl.remove();
     }); 
 }
-
 
 buttonEl.addEventListener("click", function handleClick() {
     countDown();
@@ -282,6 +310,7 @@ function fourthQuestion(response) {
     d2.setAttribute("style", "display: flex; margin-left:25vw; color: white; background: #4f0a89; padding: 10px; width: 200px; border-radius: 5px; margin-top: 10px; font-size: 20px;");
     d3.setAttribute("style", "display: flex; margin-left:25vw; color: white; background: #4f0a89; padding: 10px; width: 200px; border-radius: 5px; margin-top: 10px; font-size: 20px;");
     d4.setAttribute("style", "display: flex; margin-left:25vw; color: white; background: #4f0a89; padding: 10px; width: 200px; border-radius: 5px; margin-top: 10px; font-size: 20px;");
+    
     d1.addEventListener("click", function() {
         timeLeft -= 5;
         fifthQuestion(false);
@@ -363,12 +392,9 @@ function fifthQuestion(response) {
     });
 }
 
-
-    
     var score = document.createElement("span");
     var initials = document.createElement("div");
     var inputBox = document.createElement("input");
-    inputBox.setAttribute("id", "input-box");
     var submitBtn = document.createElement("button");
     var goBackBtn = document.createElement("button");
     var clearBtn = document.createElement("button");
@@ -397,9 +423,9 @@ function finalScore(response) {
     infoEl1.setAttribute("style", "margin-left: 25vw; margin-bottom: 10px; font-size: 20px;");
     initials.setAttribute("style", "margin-left: 25vw; font-size: 20px;");
     inputBox.setAttribute("style", "font-size:20px; border-color: #2ba5ff; margin-right: 10px;");
+    inputBox.setAttribute("id", "input-box");
     submitBtn.setAttribute("style", "padding-left: 10px; padding-right: 10px; padding-top: 3px; padding-bottom: 3px; border-radius: 5px; color: white; background: #4f0a89;");
     
-
     li1.remove();
     li2.remove();
     li3.remove();
@@ -413,13 +439,10 @@ function finalScore(response) {
         initials.remove();
         timerCount.remove();
         viewHighScores.remove(); 
+        outOfTime.remove();
         answerChoice.innerHTML = "";
-    });
-
-    
+    }); 
 }
-
-
 
 function records(newScore, newInitials) {
     var scoreTitle = document.createElement("h1");
@@ -437,7 +460,9 @@ function records(newScore, newInitials) {
         initials: newInitials
     };
     
-    storedScore.push(combined);
+    if (newScore >= 0) {
+        storedScore.push(combined);
+    }
     storedScore.sort(function (a, b) {return b.score - a.score});
     storedScore.splice(5);
     combine(storedScore);
